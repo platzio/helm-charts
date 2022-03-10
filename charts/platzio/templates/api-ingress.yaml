@@ -47,12 +47,12 @@ spec:
             backend:
               {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
               service:
-                name: {{ include "chart.fullname" . }}-api
+                name: {{ include "chart.fullname" $ }}-api
                 port:
-                  number: .Values.api.service.port
+                  number: {{ $.Values.api.service.port }}
               {{- else }}
-              serviceName: {{ include "chart.fullname" . }}-api
-              servicePort: .Values.api.service.port
+              serviceName: {{ include "chart.fullname" $ }}-api
+              servicePort: {{ $.Values.api.service.port }}
               {{- end }}
           {{- end }}
     {{- end }}

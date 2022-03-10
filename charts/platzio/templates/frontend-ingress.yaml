@@ -47,12 +47,12 @@ spec:
             backend:
               {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
               service:
-                name: {{ include "chart.fullname" . }}-frontend
+                name: {{ include "chart.fullname" $ }}-frontend
                 port:
-                  number: {{ .Values.frontend.service.port }}
+                  number: {{ $.Values.frontend.service.port }}
               {{- else }}
-              serviceName: {{ include "chart.fullname" . }}-frontend
-              servicePort: {{ .Values.frontend.service.port }}
+              serviceName: {{ include "chart.fullname" $ }}-frontend
+              servicePort: {{ $.Values.frontend.service.port }}
               {{- end }}
           {{- end }}
     {{- end }}
