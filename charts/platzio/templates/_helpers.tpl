@@ -51,11 +51,11 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{- define "chart.databaseUrl" -}}
-{{- $dbUsername := .Values.postgresql.postgresqlUsername -}}
-{{- $dbPassword := .Values.postgresql.postgresqlPassword -}}
+{{- $dbUsername := .Values.postgresql.global.auth.username -}}
+{{- $dbPassword := .Values.postgresql.global.auth.password -}}
 {{- $dbHostname := printf "%s-%s.%s.svc" .Release.Name "postgresql" .Release.Namespace -}}
 {{- $dbPort := "5432" -}}
-{{- $dbDatabase := .Values.postgresql.postgresqlDatabase -}}
+{{- $dbDatabase := .Values.postgresql.global.auth.database -}}
 {{- printf "postgres://%s:%s@%s:%s/%s" $dbUsername $dbPassword $dbHostname $dbPort $dbDatabase }}
 {{- end }}
 
