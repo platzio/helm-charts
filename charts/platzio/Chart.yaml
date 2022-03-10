@@ -3,7 +3,7 @@ appVersion: "0.1.0"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
-version: "0.1.7"
+version: "0.1.8"
 icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
 sources:
   - https://github.com/platzio
