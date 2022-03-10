@@ -77,12 +77,10 @@ frontend:
 postgresql:
   enabled: true
   nameOverride: postgresql
-  global:
-    postgresql:
-      auth:
-        username: postgres
-        password: postgres
-        database: platz
+  auth:
+    username: platz
+    password: platz
+    database: platz
 
 imagePullSecrets: []
 nameOverride: ""
