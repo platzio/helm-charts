@@ -13,7 +13,7 @@ apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: {{ include "chart.fullname" }}-api
+  name: {{ include "chart.fullname" . }}-api
   labels:
     {{- include "chart.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
@@ -47,11 +47,11 @@ spec:
             backend:
               {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
               service:
-                name: {{ include "chart.fullname" }}-api
+                name: {{ include "chart.fullname" . }}-api
                 port:
                   number: .Values.api.service.port
               {{- else }}
-              serviceName: {{ include "chart.fullname" }}-api
+              serviceName: {{ include "chart.fullname" . }}-api
               servicePort: .Values.api.service.port
               {{- end }}
           {{- end }}
