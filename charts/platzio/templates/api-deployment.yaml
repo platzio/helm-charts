@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "chart.fullname" . }}-api
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.api.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "chart.selectorLabels" . | nindent 6 }}
+      platzService: api
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "chart.selectorLabels" . | nindent 8 }}
+        platzService: api
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.api.serviceAccount.name }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: api
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag }}"
+          imagePullPolicy: {{ .Values.api.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.api.service.containerPort }}
+              protocol: TCP
+          command:
+            - /root/platz-api
+            - --debug
+            - --all-debug
+          env:
+            - name: DATABASE_URL
+              value: '{{ include "chart.databaseUrl" . }}'
+            - name: PLATZ_OWN_URL
+              value: '{{ include "platz.ownUrl" . }}'
+            - name: OIDC_SERVER_URL
+              {{- toYaml .Values.api.oidc.serverUrl | nindent 14 }}
+            - name: OIDC_CLIENT_ID
+              {{- toYaml .Values.api.oidc.clientId | nindent 14 }}
+            - name: OIDC_CLIENT_SECRET
+              {{- toYaml .Values.api.oidc.clientSecret | nindent 14 }}
+            - name: RUST_BACKTRACE
+              value: '1'
+          livenessProbe:
+            httpGet:
+              path: /api/v1/status
+              port: {{ .Values.api.service.containerPort }}
+          readinessProbe:
+            httpGet:
+              path: /api/v1/status
+              port: {{ .Values.api.service.containerPort }}
+          resources:
+            {{- toYaml .Values.api.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

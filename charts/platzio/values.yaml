@@ -1,0 +1,114 @@
+api:
+  oidc:
+    serverUrl:
+      valueFrom:
+        secretKeyRef:
+          name: oidc-config
+          key: serverUrl
+    clientId:
+      valueFrom:
+        secretKeyRef:
+          name: oidc-config
+          key: clientId
+    clientSecret:
+      valueFrom:
+        secretKeyRef:
+          name: oidc-config
+          key: clientSecret
+  image: &backendImage
+    repository: platzio/backend
+    tag: v0.1.0
+    pullPolicy: IfNotPresent
+  resources: {}
+  replicaCount: 1
+  serviceAccount:
+    name: platz-api
+    annotations: {}
+  service:
+    type: ClusterIP
+    port: 80
+    containerPort: 3000
+
+chartDiscovery:
+  ecr:
+    queueName: ""
+    regionName: ""
+  image: *backendImage
+  resources: {}
+  replicaCount: 1
+  serviceAccount:
+    name: platz-chart-discovery
+    annotations: {}
+
+statusUpdates:
+  image: *backendImage
+  resources: {}
+  replicaCount: 1
+  serviceAccount:
+    name: platz-status-updates
+    annotations: {}
+
+taskRunner:
+  image: *backendImage
+  helmImage:
+    repository: platzio/base
+    tag: v1
+  resources: {}
+  replicaCount: 1
+  serviceAccount:
+    name: platz-task-runner
+    annotations: {}
+
+frontend:
+  image:
+    repository: platzio/frontend
+    tag: v0.1.0
+    pullPolicy: IfNotPresent
+  resources: {}
+  replicaCount: 1
+  service:
+    type: ClusterIP
+    port: 80
+    containerPort: 80
+  serviceAccount:
+    name: platz-frontend
+    annotations: {}
+
+postgresql:
+  enabled: true
+  nameOverride: postgresql
+  postgresqlUsername: postgres
+  postgresqlPassword: postgres
+  postgresqlDatabase: platz
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  {}
+  # fsGroup: 2000
+
+securityContext:
+  {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts: []
+  tls: []
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
