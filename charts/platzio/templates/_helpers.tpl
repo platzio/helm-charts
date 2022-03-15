@@ -51,12 +51,16 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{- define "chart.databaseUrl" -}}
+{{- if .Values.postgresql.databaseUrlOverride }}
+{{- .Values.postgresql.databaseUrlOverride }}
+{{- else }}
 {{- $dbUsername := .Values.postgresql.auth.username -}}
 {{- $dbPassword := .Values.postgresql.auth.password -}}
 {{- $dbHostname := printf "%s-%s.%s.svc" .Release.Name "postgresql" .Release.Namespace -}}
 {{- $dbPort := "5432" -}}
 {{- $dbDatabase := .Values.postgresql.auth.database -}}
 {{- printf "postgres://%s:%s@%s:%s/%s" $dbUsername $dbPassword $dbHostname $dbPort $dbDatabase }}
+{{- end }}
 {{- end }}
 
 {{- define "platz.ownUrlSchema" -}}
