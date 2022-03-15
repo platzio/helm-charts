@@ -3,6 +3,24 @@ entries:
   platzio:
   - apiVersion: v2
     appVersion: 0.1.2
+    created: "2022-03-15T11:33:18.699309879Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.5
+    description: A Helm chart for Platz.io
+    digest: 442af0440a27b6dc8b5f82673e215e05355d0dda2657ac7f86ee1fb85092df01
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.12/platzio-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v2
+    appVersion: 0.1.2
     created: "2022-03-15T11:20:27.034484826Z"
     dependencies:
     - condition: postgresql.enabled
@@ -217,4 +235,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-03-15T11:20:27.034843832Z"
+generated: "2022-03-15T11:33:18.699574082Z"
