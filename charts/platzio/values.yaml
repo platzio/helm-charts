@@ -40,6 +40,17 @@ chartDiscovery:
     name: platz-chart-discovery
     annotations: {}
 
+resourceSync:
+  image: *backendImage
+  helmImage:
+    repository: platzio/base
+    tag: v1
+  resources: {}
+  replicaCount: 1
+  serviceAccount:
+    name: platz-resource-sync
+    annotations: {}
+
 statusUpdates:
   image: *backendImage
   resources: {}
