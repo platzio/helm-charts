@@ -1,9 +1,9 @@
 apiVersion: v2
-appVersion: "0.1.3"
+appVersion: "0.1.4"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
-version: "0.1.13"
+version: "0.1.14"
 icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
 sources:
   - https://github.com/platzio
