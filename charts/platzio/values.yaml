@@ -17,7 +17,7 @@ api:
           key: clientSecret
   image: &backendImage
     repository: platzio/backend
-    tag: v0.1.10
+    tag: v0.1.11
     pullPolicy: IfNotPresent
   resources: {}
   replicaCount: 1
