@@ -31,8 +31,8 @@ spec:
         - name: chart-discovery
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.chartDiscovery.image.repository }}:{{ .Values.chartDiscovery.image.tag }}"
-          imagePullPolicy: {{ .Values.chartDiscovery.image.pullPolicy }}
+          image: "{{ .Values.images.backend.repository }}:{{ .Values.images.backend.tag }}"
+          imagePullPolicy: {{ .Values.images.backend.pullPolicy }}
           command:
             - /root/platz-chart-discovery
             - --debug

@@ -31,8 +31,8 @@ spec:
         - name: status-updates
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: '{{- .Values.statusUpdates.image.repository }}:{{ .Values.statusUpdates.image.tag }}'
-          imagePullPolicy: {{ .Values.statusUpdates.image.pullPolicy }}
+          image: '{{- .Values.images.backend.repository }}:{{ .Values.images.backend.tag }}'
+          imagePullPolicy: {{ .Values.images.backend.pullPolicy }}
           command:
             - /root/platz-status-updates
             - --debug

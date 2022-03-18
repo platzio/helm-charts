@@ -31,8 +31,8 @@ spec:
         - name: task-runner
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: '{{- .Values.taskRunner.image.repository }}:{{ .Values.taskRunner.image.tag }}'
-          imagePullPolicy: {{ .Values.taskRunner.image.pullPolicy }}
+          image: '{{- .Values.images.backend.repository }}:{{ .Values.images.backend.tag }}'
+          imagePullPolicy: {{ .Values.images.backend.pullPolicy }}
           command:
             - /root/platz-task-runner
             - --debug
@@ -43,7 +43,7 @@ spec:
             - name: PLATZ_OWN_URL
               value: '{{ include "platz.ownUrl" . }}'
             - name: PLATZ_HELM_IMAGE
-              value: '{{- .Values.taskRunner.helmImage.repository }}:{{ .Values.taskRunner.helmImage.tag }}'
+              value: '{{- .Values.images.helm.repository }}:{{ .Values.images.helm.tag }}'
             - name: PLATZ_SELF_NAMESPACE
               value: '{{ .Release.Namespace }}'
             - name: PLATZ_SELF_SERVICE_ACCOUNT_NAME

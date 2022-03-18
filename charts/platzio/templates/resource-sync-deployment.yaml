@@ -31,8 +31,8 @@ spec:
         - name: resource-sync
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: '{{- .Values.resourceSync.image.repository }}:{{ .Values.resourceSync.image.tag }}'
-          imagePullPolicy: {{ .Values.resourceSync.image.pullPolicy }}
+          image: '{{- .Values.images.backend.repository }}:{{ .Values.images.backend.tag }}'
+          imagePullPolicy: {{ .Values.images.backend.pullPolicy }}
           command:
             - /root/platz-resource-sync
             - --debug
