@@ -56,11 +56,11 @@ spec:
               value: '1'
           livenessProbe:
             httpGet:
-              path: /api/v1/status
+              path: /status
               port: {{ .Values.api.service.containerPort }}
           readinessProbe:
             httpGet:
-              path: /api/v1/status
+              path: /status
               port: {{ .Values.api.service.containerPort }}
           resources:
             {{- toYaml .Values.api.resources | nindent 12 }}
