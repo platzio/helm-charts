@@ -12,6 +12,9 @@ images:
     tag: v1
 
 api:
+  enabledVersions:
+    - v1
+    - v2
   oidc:
     serverUrl:
       valueFrom:

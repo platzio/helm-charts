@@ -35,14 +35,15 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
-    - host: {{ .host | quote }}
+    {{- range $host := $.Values.ingress.hosts }}
+    - host: {{ $host.host | quote }}
       http:
         paths:
-          {{- range .paths }}
-          - path: {{ trimSuffix "/" .path }}/api
-            {{- if and .pathType (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
-            pathType: {{ .pathType }}
+          {{- range $version := $.Values.api.enabledVersions }}
+          {{- range $path := $host.paths }}
+          - path: {{ trimSuffix "/" $path.path }}/api/{{ $version }}
+            {{- if and $path.pathType (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
+            pathType: {{ $path.pathType }}
             {{- end }}
             backend:
               {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
@@ -54,6 +55,7 @@ spec:
               serviceName: {{ include "chart.fullname" $ }}-api
               servicePort: {{ $.Values.api.service.port }}
               {{- end }}
+          {{- end }}
           {{- end }}
     {{- end }}
 {{- end }}
