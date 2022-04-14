@@ -3,6 +3,28 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: fixed
+          description: Fixed Grafana link formatting
+    apiVersion: v2
+    appVersion: 0.2.3
+    created: "2022-04-14T18:05:46.37958075Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.5
+    description: A Helm chart for Platz.io
+    digest: 733c2e0664662fdfc05599efac5ee5d895726fb052bfc9027e96f9aa344f684f
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.2.3/platzio-0.2.3.tgz
+    version: 0.2.3
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: Added Grafana URL and data-source name to clusters. This adds an "Open Logs" link that opens Grafana with the deployment logs.
     apiVersion: v2
@@ -527,4 +549,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-14T14:48:18.469956666Z"
+generated: "2022-04-14T18:05:46.379896253Z"
