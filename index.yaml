@@ -4,6 +4,29 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
+          description: Helm pull command usage
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.3.0-beta.1
+    created: "2022-04-19T14:10:07.74541759Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.21
+    description: A Helm chart for Platz.io
+    digest: 56584e7f7f93f0e5407b67abff6949c3c1ab95520b6a83a472d659119fc45e74
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.0-beta.1/platzio-0.3.0-beta.1.tgz
+    version: 0.3.0-beta.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
           description: Grafana configuration fixes (thanks @vmalloc!)
         - kind: changed
           description: PostgreSQL chart upgraded from 11.1.6 to 11.1.21
@@ -576,4 +599,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-19T13:54:09.521590662Z"
+generated: "2022-04-19T14:10:07.745734108Z"
