@@ -7,6 +7,29 @@ entries:
           description: Helm pull command formatting
       artifacthub.io/prerelease: "true"
     apiVersion: v2
+    appVersion: 0.3.0-beta.3
+    created: "2022-04-20T08:13:12.447927565Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.21
+    description: A Helm chart for Platz.io
+    digest: f857b4c4fd93315205d6fe441e11f67a8ef922341811d506d9fdf271dabf4450
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.0-beta.3/platzio-0.3.0-beta.3.tgz
+    version: 0.3.0-beta.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Helm pull command formatting
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
     appVersion: 0.3.0-beta.2
     created: "2022-04-20T06:57:01.545358045Z"
     dependencies:
@@ -622,4 +645,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-20T06:57:01.545858757Z"
+generated: "2022-04-20T08:13:12.448397584Z"
