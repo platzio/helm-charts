@@ -3,6 +3,29 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: added
+          description: Remove `-chart` and `-charts` suffixes from Helm repositories when converting their names to a deployment kind
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.3.0-beta.4
+    created: "2022-04-20T12:31:08.556017186Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.21
+    description: A Helm chart for Platz.io
+    digest: fbcb98be2206c689ca71053f60dc4cb0d96c68ce57ae4abdc1e68264843fae0f
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.0-beta.4/platzio-0.3.0-beta.4.tgz
+    version: 0.3.0-beta.4
+  - annotations:
+      artifacthub.io/changes: |
         - kind: fixed
           description: Helm pull command formatting
       artifacthub.io/prerelease: "true"
@@ -645,4 +668,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-20T08:13:12.448397584Z"
+generated: "2022-04-20T12:31:08.556491059Z"
