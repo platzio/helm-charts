@@ -4,6 +4,41 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: added
+          description: Cluster TLS secret name configuration.
+        - kind: added
+          description: The "platz:" section injected into values now contains "env_id" and "env_name" properties.
+        - kind: added
+          description: Ingress hostnames format. A new v1beta2 features API version contains an "ingress" block replacing the previous "standard_ingress" flag. The new ingress block allows for selecting whether an ingress hostname is built from the deployment kind and name (the behavior so far) or just the deployment name.
+        - kind: changed
+          description: The task-runner worker has been renamed to k8s-agent.
+        - kind: changed
+          description: The chart now supports multiple k8s-agents using a top-level "k8sAgents" block that contains a list of "name" and "serviceAccount" definitions for each k8s-agent.
+        - kind: changed
+          description: k8s-agent deployment changed to a statefulset.
+        - kind: changed
+          description: Upgraded postgresql subchart to 11.1.22.
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.3.0-beta.5
+    created: "2022-04-21T18:08:52.514204647Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.22
+    description: A Helm chart for Platz.io
+    digest: 011b92b0da583333e240ddc2f010bec7161399511b60b04093226c283d12aa53
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.0-beta.5/platzio-0.3.0-beta.5.tgz
+    version: 0.3.0-beta.5
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
           description: Remove `-chart` and `-charts` suffixes from Helm repositories when converting their names to a deployment kind
       artifacthub.io/prerelease: "true"
     apiVersion: v2
@@ -668,4 +703,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-20T12:31:08.556491059Z"
+generated: "2022-04-21T18:08:52.514563957Z"
