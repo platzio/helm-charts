@@ -65,12 +65,12 @@ statusUpdates:
     name: platz-status-updates
     annotations: {}
 
-taskRunner:
-  resources: {}
-  replicaCount: 1
-  serviceAccount:
-    name: platz-task-runner
-    annotations: {}
+k8sAgents:
+  - name: default
+    resources: {}
+    serviceAccount:
+      name: ""
+      annotations: {}
 
 frontend:
   resources: {}

@@ -1,0 +1,73 @@
+{{- range .Values.k8sAgents }}
+{{- $serviceAccountName := default (printf "platz-k8s-agent-%s" .name) .serviceAccount.name }}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "chart.fullname" $ }}-k8s-agent-{{ .name }}
+  labels:
+    {{- include "chart.labels" $ | nindent 4 }}
+spec:
+  serviceName: k8s-agent-{{ .name }}
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "chart.selectorLabels" $ | nindent 6 }}
+      platzService: k8s-agent
+      k8sAgentName: {{ .name }}
+  template:
+    metadata:
+      {{- with $.Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "chart.selectorLabels" $ | nindent 8 }}
+        platzService: k8s-agent
+        k8sAgentName: {{ .name }}
+    spec:
+      {{- with $.Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ $serviceAccountName }}
+      securityContext:
+        {{- toYaml $.Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: k8s-agent
+          securityContext:
+            {{- toYaml $.Values.securityContext | nindent 12 }}
+          image: '{{- $.Values.images.backend.repository }}:{{ $.Values.images.backend.tag }}'
+          imagePullPolicy: {{ $.Values.images.backend.pullPolicy }}
+          command:
+            - /root/platz-k8s-agent
+            - --debug
+            - --all-debug
+          env:
+            - name: DATABASE_URL
+              value: '{{ include "chart.databaseUrl" $ }}'
+            - name: PLATZ_OWN_URL
+              value: '{{ include "platz.ownUrl" $ }}'
+            - name: PLATZ_HELM_IMAGE
+              value: '{{- $.Values.images.helm.repository }}:{{ $.Values.images.helm.tag }}'
+            - name: PLATZ_SELF_NAMESPACE
+              value: '{{ $.Release.Namespace }}'
+            - name: PLATZ_SELF_SERVICE_ACCOUNT_NAME
+              value: {{ $serviceAccountName }}
+            - name: RUST_BACKTRACE
+              value: '1'
+          resources:
+            {{- toYaml .resources | nindent 12 }}
+      {{- with $.Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}
