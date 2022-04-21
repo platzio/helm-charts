@@ -3,6 +3,29 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: fixed
+          description: Fix k8s-agent task runner not waking up when new cluster is discovered
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.3.0-beta.6
+    created: "2022-04-21T18:57:45.234528639Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.22
+    description: A Helm chart for Platz.io
+    digest: e5e4eef93477ca012a4026c74f4e0d0a5b0131a56d31aba49f3bcebf005cd6c4
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.0-beta.6/platzio-0.3.0-beta.6.tgz
+    version: 0.3.0-beta.6
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: Cluster TLS secret name configuration.
         - kind: added
@@ -703,4 +726,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-21T18:08:52.514563957Z"
+generated: "2022-04-21T18:57:45.234936845Z"
