@@ -4,6 +4,33 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
+          description: Fixed update secret API not updating the updated_at property
+        - kind: fixed
+          description: Fixed env names to be case-insensitive unique
+        - kind: added
+          description: New env secrets screen with collection creation, secret renaming, editing and deletion
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.3.0-beta.7
+    created: "2022-04-22T09:25:31.469926705Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.22
+    description: A Helm chart for Platz.io
+    digest: e7d268ba5d279484e884355c5c575729d6caef5c4171c876e263e140f16f9d2c
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.0-beta.7/platzio-0.3.0-beta.7.tgz
+    version: 0.3.0-beta.7
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
           description: Fix k8s-agent task runner not waking up when new cluster is discovered
       artifacthub.io/prerelease: "true"
     apiVersion: v2
@@ -726,4 +753,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-21T18:57:45.234936845Z"
+generated: "2022-04-22T09:25:31.470324226Z"
