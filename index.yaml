@@ -3,6 +3,36 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: added
+          description: A secret with deployment access token is now refreshed every 30 minutes for every deployment
+        - kind: changed
+          description: Upgraded postgresql subchart to 11.1.25
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.3.2
+    created: "2022-04-27T19:11:23.231424178Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.25
+    description: A Helm chart for Platz.io
+    digest: 6cd803f32b69feaa725190bc435ea77c2eccd89dc106a41343da4caa1eac9cc6
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.2/platzio-0.3.2.tgz
+    version: 0.3.2
+  - annotations:
+      artifacthub.io/changes: |
         - kind: fixed
           description: Grafana configuration fixes (thanks @vmalloc!)
         - kind: fixed
@@ -900,4 +930,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-27T06:33:58.188522132Z"
+generated: "2022-04-27T19:11:23.23189011Z"
