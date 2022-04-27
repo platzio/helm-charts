@@ -1,5 +1,6 @@
 apiVersion: v2
-appVersion: "0.3.0"
+appVersion: "0.3.1"
+version: "0.3.1"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
@@ -8,7 +9,6 @@ keywords:
   - chart
   - cd
   - continuous deployment
-version: "0.3.0"
 icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
 sources:
   - https://github.com/platzio
@@ -35,7 +35,7 @@ annotations:
     - kind: changed
       description: k8s-agent deployment changed to a statefulset.
     - kind: added
-      description: Terraform modules for deploying in AWS: https://github.com/platzio/terraform-aws
+      description: "Terraform modules for deploying in AWS: https://github.com/platzio/terraform-aws-platzio"
     - kind: added
       description: API access tokens can now identify deployments in addition to users
     - kind: added
