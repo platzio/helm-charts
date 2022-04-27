@@ -20,7 +20,7 @@ dependencies:
     condition: postgresql.enabled
 
 annotations:
-  artifacthub.io/prerelease: "true"
+  artifacthub.io/prerelease: "false"
   artifacthub.io/changes: |
     - kind: fixed
       description: Grafana configuration fixes (thanks @vmalloc!)
