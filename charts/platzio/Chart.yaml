@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "0.3.1"
-version: "0.3.1"
+appVersion: "0.3.2"
+version: "0.3.2"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
@@ -16,43 +16,13 @@ sources:
 dependencies:
   - name: postgresql
     repository: https://charts.bitnami.com/bitnami
-    version: 11.1.23
+    version: 11.1.25
     condition: postgresql.enabled
 
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/changes: |
-    - kind: fixed
-      description: Grafana configuration fixes (thanks @vmalloc!)
-    - kind: fixed
-      description: When updating a secret the updated_at property wasn't updated
-    - kind: fixed
-      description: Fixed env names to be case-insensitive unique
+    - kind: added
+      description: A secret with deployment access token is now refreshed every 30 minutes for every deployment
     - kind: changed
-      description: The task-runner worker has been renamed to k8s-agent.
-    - kind: changed
-      description: The old "taskRunner" object is now an array named "k8sAgents".
-    - kind: changed
-      description: k8s-agent deployment changed to a statefulset.
-    - kind: added
-      description: "Terraform modules for deploying in AWS: https://github.com/platzio/terraform-aws-platzio"
-    - kind: added
-      description: API access tokens can now identify deployments in addition to users
-    - kind: added
-      description: Added configuration for automatically adding new users to envs
-    - kind: added
-      description: Remove `-chart` and `-charts` suffixes from Helm repositories when converting their names to a deployment kind
-    - kind: added
-      description: Cluster TLS secret name configuration.
-    - kind: added
-      description: The "platz:" section injected into values now contains "env_id" and "env_name" properties.
-    - kind: added
-      description: Ingress hostnames format. A new v1beta2 features API version contains an "ingress" block replacing the previous "standard_ingress" flag. The new ingress block allows for selecting whether an ingress hostname is built from the deployment kind and name (the behavior so far) or just the deployment name.
-    - kind: added
-      description: The chart now supports multiple k8s-agents using a top-level "k8sAgents" block that contains a list of "name" and "serviceAccount" definitions for each k8s-agent.
-    - kind: added
-      description: New env secrets screen with collection creation, secret renaming, editing and deletion
-    - kind: added
-      description: Helm was upgraded to 3.8.2
-    - kind: changed
-      description: Upgraded postgresql subchart to 11.1.23
+      description: Upgraded postgresql subchart to 11.1.25
