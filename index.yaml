@@ -3,6 +3,34 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: fixed
+          description: k8s-agent credentials refresh fix
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.3.3
+    created: "2022-04-28T06:25:18.693588411Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.25
+    description: A Helm chart for Platz.io
+    digest: 67f9e7b112a3e8a19257b096350ca38b8539aa3bd929e2513aa02c3e321c682e
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.3/platzio-0.3.3.tgz
+    version: 0.3.3
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: A secret with deployment access token is now refreshed every 30 minutes for every deployment
         - kind: changed
@@ -930,4 +958,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-27T19:11:23.23189011Z"
+generated: "2022-04-28T06:25:18.694064369Z"
