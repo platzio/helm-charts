@@ -1,7 +1,7 @@
 images:
   frontend:
     repository: platzio/frontend
-    tag: v0.3.1
+    tag: v0.3.2
     pullPolicy: IfNotPresent
   backend:
     repository: platzio/backend
