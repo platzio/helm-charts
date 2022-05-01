@@ -4,6 +4,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
+          description: Fixed Deployment kinds list to remove duplicates
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.3.4
+    created: "2022-05-01T20:25:47.290741549Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.25
+    description: A Helm chart for Platz.io
+    digest: c81aac1c860573eb2b8257a7070977439d07639ad4d2d9afee79af56e5f517a7
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.4/platzio-0.3.4.tgz
+    version: 0.3.4
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
           description: k8s-agent credentials refresh fix
       artifacthub.io/prerelease: "false"
     apiVersion: v2
@@ -958,4 +986,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-28T06:25:18.694064369Z"
+generated: "2022-05-01T20:25:47.291150862Z"
