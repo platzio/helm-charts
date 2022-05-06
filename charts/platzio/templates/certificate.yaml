@@ -1,0 +1,23 @@
+{{- if .Values.certManager.certificate.create -}}
+{{ $host := index .Values "ingress" "hosts" 0 "host" }}
+{{ $secretName := index .Values "ingress" "tls" 0 "secretName" }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ $host }}
+spec:
+  secretName: {{ $secretName }}
+  subject:
+    organizations:
+      - {{ $host }}
+  commonName: {{ $host }}
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - {{ $host }}
+  issuerRef:
+    name: {{ include "platz.issuerName" . }}
+    kind: {{ .Values.certManager.issuer.kind }}
+    group: {{ .Values.certManager.issuer.group }}
+{{- end -}}

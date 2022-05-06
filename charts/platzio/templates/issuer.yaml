@@ -1,0 +1,16 @@
+{{- if .Values.certManager.issuer.create -}}
+apiVersion: cert-manager.io/v1
+kind: {{ .Values.certManager.issuer.kind }}
+metadata:
+  name: {{ include "platz.issuerName" . }}
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: {{ .Values.certManager.issuer.email }}
+    privateKeySecretRef:
+      name: {{ include "platz.issuerName" . }}-key
+    solvers:
+    - http01:
+        ingress:
+          class: {{ .Values.ingress.className }}
+{{- end -}}

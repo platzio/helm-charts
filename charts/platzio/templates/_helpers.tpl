@@ -84,3 +84,12 @@ app.kubernetes.io/instance: {{ .Release.Name }}
         {{- end }}
     {{- end }}
 {{- end }}
+
+{{- define "platz.issuerName" -}}
+{{- $fullname := include "chart.fullname" . }}
+{{- if .Values.certManager.issuer.name }}
+{{- .Values.certManager.issuer.name }}
+{{- else }}
+{{- printf "%s-issuer" $fullname }}
+{{- end }}
+{{- end }}

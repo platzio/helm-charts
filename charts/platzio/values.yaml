@@ -147,6 +147,16 @@ ingress:
   hosts: []
   tls: []
 
+certManager:
+  certificate:
+    create: false
+  issuer:
+    create: false
+    name: ""
+    email: ""
+    kind: Issuer
+    group: cert-manager.io
+
 nodeSelector: {}
 
 tolerations: []
