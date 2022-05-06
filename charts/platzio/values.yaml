@@ -31,7 +31,12 @@ api:
         secretKeyRef:
           name: oidc-config
           key: clientSecret
-  resources: {}
+  resources:
+    requests:
+      cpu: 100m
+      memory: 64Mi
+    limits:
+      memory: 512Mi
   replicaCount: 1
   serviceAccount:
     name: platz-api
@@ -45,21 +50,36 @@ chartDiscovery:
   ecr:
     queueName: ""
     regionName: ""
-  resources: {}
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 256Mi
   replicaCount: 1
   serviceAccount:
     name: platz-chart-discovery
     annotations: {}
 
 resourceSync:
-  resources: {}
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 256Mi
   replicaCount: 1
   serviceAccount:
     name: platz-resource-sync
     annotations: {}
 
 statusUpdates:
-  resources: {}
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 256Mi
   replicaCount: 1
   serviceAccount:
     name: platz-status-updates
@@ -67,13 +87,23 @@ statusUpdates:
 
 k8sAgents:
   - name: default
-    resources: {}
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 256Mi
     serviceAccount:
       name: ""
       annotations: {}
 
 frontend:
-  resources: {}
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      memory: 128Mi
   replicaCount: 1
   service:
     type: ClusterIP
