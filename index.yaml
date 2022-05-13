@@ -3,6 +3,40 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: changed
+          description: Upgraded postgresql subchart to 11.1.28
+        - kind: fixed
+          description: All workers now have resource definitions
+        - kind: added
+          description: The chart can create Certificate and Issuer for its Ingress
+        - kind: changed
+          description: Upgraded postgresql subchart to 11.1.29
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.3.5
+    created: "2022-05-13T19:09:14.86523346Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.29
+    description: A Helm chart for Platz.io
+    digest: 55e725c30ecdb0f3a81606206bbc63785f6cfcbfe5ebd094cc6ccf8c3126490d
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.3.5/platzio-0.3.5.tgz
+    version: 0.3.5
+  - annotations:
+      artifacthub.io/changes: |
         - kind: fixed
           description: Fixed Deployment kinds list to remove duplicates
       artifacthub.io/prerelease: "false"
@@ -986,4 +1020,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-01T20:25:47.291150862Z"
+generated: "2022-05-13T19:09:14.865742663Z"
