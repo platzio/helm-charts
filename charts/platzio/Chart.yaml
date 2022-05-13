@@ -16,7 +16,7 @@ sources:
 dependencies:
   - name: postgresql
     repository: https://charts.bitnami.com/bitnami
-    version: 11.1.28
+    version: 11.1.29
     condition: postgresql.enabled
 
 annotations:
