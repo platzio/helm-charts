@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "0.3.5"
-version: "0.3.5"
+appVersion: "0.4.0"
+version: "0.4.0"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
@@ -16,17 +16,13 @@ sources:
 dependencies:
   - name: postgresql
     repository: https://charts.bitnami.com/bitnami
-    version: 11.1.29
+    version: 11.5.0
     condition: postgresql.enabled
 
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/changes: |
-    - kind: changed
-      description: Upgraded postgresql subchart to 11.1.28
-    - kind: fixed
-      description: All workers now have resource definitions
     - kind: added
-      description: The chart can create Certificate and Issuer for its Ingress
+      description: Helm tag format parsing
     - kind: changed
-      description: Upgraded postgresql subchart to 11.1.29
+      description: Postgresql subchart updated to 11.5.0
