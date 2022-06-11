@@ -41,17 +41,20 @@ spec:
             - /root/platz-api
             - --debug
             - --all-debug
+            {{- range $adminEmail := .Values.auth.adminEmails }}
+            - --admin-email={{ $adminEmail }}
+            {{- end }}
           env:
             - name: DATABASE_URL
               value: '{{ include "chart.databaseUrl" . }}'
             - name: PLATZ_OWN_URL
               value: '{{ include "platz.ownUrl" . }}'
             - name: OIDC_SERVER_URL
-              {{- toYaml .Values.api.oidc.serverUrl | nindent 14 }}
+              {{- toYaml .Values.auth.oidc.serverUrl | nindent 14 }}
             - name: OIDC_CLIENT_ID
-              {{- toYaml .Values.api.oidc.clientId | nindent 14 }}
+              {{- toYaml .Values.auth.oidc.clientId | nindent 14 }}
             - name: OIDC_CLIENT_SECRET
-              {{- toYaml .Values.api.oidc.clientSecret | nindent 14 }}
+              {{- toYaml .Values.auth.oidc.clientSecret | nindent 14 }}
             - name: RUST_BACKTRACE
               value: '1'
           livenessProbe:

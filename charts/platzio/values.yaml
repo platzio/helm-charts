@@ -5,16 +5,14 @@ images:
     pullPolicy: IfNotPresent
   backend:
     repository: platzio/backend
-    tag: v0.4.0
+    tag: v0.4.1
     pullPolicy: IfNotPresent
   helm:
     repository: platzio/base
     tag: v3
 
-api:
-  enabledVersions:
-    - v1
-    - v2
+auth:
+  adminEmails: []
   oidc:
     serverUrl:
       valueFrom:
@@ -31,6 +29,11 @@ api:
         secretKeyRef:
           name: oidc-config
           key: clientSecret
+
+api:
+  enabledVersions:
+    - v1
+    - v2
   resources:
     requests:
       cpu: 100m
