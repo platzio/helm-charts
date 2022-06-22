@@ -3,6 +3,36 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: fixed
+          description: Fixed a restarting cluster tracker cleaning up k8s resources of other clusters
+        - kind: changed
+          description: Postgresql subchart updated to 11.6.7
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.2
+    created: "2022-06-22T17:48:04.721918188Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.7
+    description: A Helm chart for Platz.io
+    digest: 26a6e19bd38b710a8605dddfcd08856b1665a18e63fa3af706c1aae7d37e1690
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.2/platzio-0.4.2.tgz
+    version: 0.4.2
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: Allow specifying admin emails for new installations under auth.adminEmails
         - kind: changed
@@ -1082,4 +1112,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-11T09:49:29.653977336Z"
+generated: "2022-06-22T17:48:04.722408788Z"
