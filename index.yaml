@@ -7,6 +7,46 @@ entries:
           description: ingress.hosts renamed to ingress.rules
         - kind: changed
           description: host is ingress.rules is optional
+        - kind: changed
+          description: Use PLATZ_OWN_URL for generating OIDC callback
+        - kind: added
+          description: Added optional ownUrlOverride value
+        - kind: fixed
+          description: Fixed --admin_email option to --admin-email in backend
+        - kind: fixed
+          description: Reduced backend image size from ~2GB to ~500MB
+        - kind: changed
+          description: Postgresql subchart updated to 11.6.10
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.4.3-beta.1
+    created: "2022-06-25T09:21:36.496836824Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.10
+    description: A Helm chart for Platz.io
+    digest: 8355abd751fcc6ea82d2c151885b9703c569fbe5ffb01b6c0d0158717c802459
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.3-beta.1/platzio-0.4.3-beta.1.tgz
+    version: 0.4.3-beta.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: ingress.hosts renamed to ingress.rules
+        - kind: changed
+          description: host is ingress.rules is optional
         - kind: added
           description: Added optional ownUrlOverride value
         - kind: fixed
@@ -1150,4 +1190,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-25T07:53:54.977968258Z"
+generated: "2022-06-25T09:21:36.497424532Z"
