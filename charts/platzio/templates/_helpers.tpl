@@ -76,11 +76,15 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{- define "platz.ownUrl" -}}
-    {{- with .Values.ingress }}
-        {{- if .enabled }}
-            {{- $scheme := include "platz.ownUrlSchema" . -}}
-            {{- $host := (first .hosts).host -}}
-            {{- printf "%s://%s" $scheme $host }}
+    {{- if .Values.ownUrlOverride }}
+        {{- .Values.ownUrlOverride }}
+    {{- else }}
+        {{- with .Values.ingress }}
+            {{- if .enabled }}
+                {{- $scheme := include "platz.ownUrlSchema" . -}}
+                {{- $host := (first .hosts).host -}}
+                {{- printf "%s://%s" $scheme $host }}
+            {{- end }}
         {{- end }}
     {{- end }}
 {{- end }}

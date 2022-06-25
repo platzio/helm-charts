@@ -127,6 +127,7 @@ postgresql:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+ownUrlOverride: ""
 
 podAnnotations: {}
 
