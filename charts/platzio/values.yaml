@@ -5,7 +5,7 @@ images:
     pullPolicy: IfNotPresent
   backend:
     repository: platzio/backend
-    tag: v0.4.3-beta.2
+    tag: v0.4.3-beta.3
     pullPolicy: IfNotPresent
   helm:
     repository: platzio/base
