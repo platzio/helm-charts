@@ -35,12 +35,11 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    {{- range $host := $.Values.ingress.hosts }}
-    - host: {{ $host.host | quote }}
-      http:
+    {{- range $rule := $.Values.ingress.rules }}
+    - http:
         paths:
           {{- range $version := $.Values.api.enabledVersions }}
-          {{- range $path := $host.paths }}
+          {{- range $path := $rule.paths }}
           - path: {{ trimSuffix "/" $path.path }}/api/{{ $version }}
             {{- if and $path.pathType (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
             pathType: {{ $path.pathType }}
@@ -57,5 +56,8 @@ spec:
               {{- end }}
           {{- end }}
           {{- end }}
+      {{- if $rule.host }}
+      host: {{ $rule.host | quote }}
+      {{- end }}
     {{- end }}
 {{- end }}
