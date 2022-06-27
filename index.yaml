@@ -15,6 +15,48 @@ entries:
           description: Fixed --admin_email option to --admin-email in backend
         - kind: fixed
           description: Reduced backend image size from ~2GB to ~500MB
+        - kind: fixed
+          description: Fixed chart-discovery worker to not crash when chart download fails
+        - kind: changed
+          description: Postgresql subchart updated to 11.6.10
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.3
+    created: "2022-06-27T16:21:01.098178602Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.10
+    description: A Helm chart for Platz.io
+    digest: 87dbc614f07b4d4daa5fce785a82a2873205ec072f7a2258ef6b21c3990ba778
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.3/platzio-0.4.3.tgz
+    version: 0.4.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: ingress.hosts renamed to ingress.rules
+        - kind: changed
+          description: host is ingress.rules is optional
+        - kind: changed
+          description: Use PLATZ_OWN_URL for generating OIDC callback
+        - kind: added
+          description: Added optional ownUrlOverride value
+        - kind: fixed
+          description: Fixed --admin_email option to --admin-email in backend
+        - kind: fixed
+          description: Reduced backend image size from ~2GB to ~500MB
         - kind: changed
           description: Postgresql subchart updated to 11.6.10
       artifacthub.io/prerelease: "true"
@@ -1190,4 +1232,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-25T09:21:36.497424532Z"
+generated: "2022-06-27T16:21:01.098709405Z"
