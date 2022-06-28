@@ -82,7 +82,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
         {{- with .Values.ingress }}
             {{- if .enabled }}
                 {{- $scheme := include "platz.ownUrlSchema" . -}}
-                {{- $host := (first .hosts).host -}}
+                {{- $host := (first .rules).host -}}
                 {{- printf "%s://%s" $scheme $host }}
             {{- end }}
         {{- end }}
