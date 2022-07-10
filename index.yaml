@@ -3,6 +3,36 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: added
+          description: server_url and expires_at properties to platz-creds secret
+        - kind: changed
+          description: Postgresql subchart updated to 11.6.15
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.5
+    created: "2022-07-10T11:49:59.562141264Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    description: A Helm chart for Platz.io
+    digest: 3fb4b06f9152ccc2e736a1d5be308981c26125f34a16a7ee1eea5514e08fd36f
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.5/platzio-0.4.5.tgz
+    version: 0.4.5
+  - annotations:
+      artifacthub.io/changes: |
         - kind: fixed
           description: platz.ownUrl macro referred to ingress.hosts instead of ingress.rules
       artifacthub.io/prerelease: "false"
@@ -1260,4 +1290,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-28T09:32:44.678179089Z"
+generated: "2022-07-10T11:49:59.562577063Z"
