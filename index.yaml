@@ -4,6 +4,46 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: added
+          description: /api/v2/helm-charts can now filter charts in use or potential upgrades using ?in_use=true
+        - kind: changed
+          description: Helm registry kinds is now saved in the database instead of being deduced in the frontend
+        - kind: added
+          description: /api/v2/helm-registries allows filtering registries by kind
+        - kind: added
+          description: The platz section in injected values now contains the entire cluster as returned from the API
+        - kind: fixed
+          description: The frontend performs the initial load much faster by only loading charts in use
+        - kind: changed
+          description: The frontend shows loading progress when it has to load all charts of a specific kind/registry
+        - kind: changed
+          description: Postgresql subchart updated to 11.7.1
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.6
+    created: "2022-08-15T04:37:54.800387976Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.7.1
+    description: A Helm chart for Platz.io
+    digest: 9525d9d056a1ba2943f1ec9b4fa4dd9c82a52ae125184ab16d7656885d7b8d01
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.6/platzio-0.4.6.tgz
+    version: 0.4.6
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
           description: server_url and expires_at properties to platz-creds secret
         - kind: changed
           description: Postgresql subchart updated to 11.6.15
@@ -1290,4 +1330,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-10T11:49:59.562577063Z"
+generated: "2022-08-15T04:37:54.801098081Z"
