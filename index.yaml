@@ -43,6 +43,34 @@ entries:
     version: 0.4.6
   - annotations:
       artifacthub.io/changes: |
+        - kind: fixed
+          description: Fixed .Values.ingress.hosts reference to .Values.ingress.rules
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.6-1
+    created: "2022-08-27T00:05:54.723678862Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.7.1
+    description: A Helm chart for Platz.io
+    digest: 6736827b9ce60b93209912bfd6ccfc6e7130abac2fb33ee7c10782a951ada4b5
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.6-1/platzio-0.4.6-1.tgz
+    version: 0.4.6-1
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: server_url and expires_at properties to platz-creds secret
         - kind: changed
@@ -1330,4 +1358,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-15T04:37:54.801098081Z"
+generated: "2022-08-27T00:05:54.724380692Z"
