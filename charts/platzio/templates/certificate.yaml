@@ -1,5 +1,5 @@
 {{- if .Values.certManager.certificate.create -}}
-{{ $host := index .Values "ingress" "hosts" 0 "host" }}
+{{ $host := index .Values "ingress" "rules" 0 "host" }}
 {{ $secretName := index .Values "ingress" "tls" 0 "secretName" }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
