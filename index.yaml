@@ -4,6 +4,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: added
+          description: Deployment icons defined through Helm chart
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.7-beta.1
+    created: "2022-08-28T05:42:53.297961428Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.7.1
+    description: A Helm chart for Platz.io
+    digest: 86bd810177281a4d0ad67bdf9112cb513c8ea3158a0850b0f4ebf94e07d5ccc3
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.7-beta.1/platzio-0.4.7-beta.1.tgz
+    version: 0.4.7-beta.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
           description: /api/v2/helm-charts can now filter charts in use or potential upgrades using ?in_use=true
         - kind: changed
           description: Helm registry kinds is now saved in the database instead of being deduced in the frontend
@@ -1358,4 +1386,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-27T00:05:54.724380692Z"
+generated: "2022-08-28T05:42:53.298646842Z"
