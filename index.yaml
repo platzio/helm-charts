@@ -4,6 +4,36 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: added
+          description: New logo and mascot by @vmalloc!
+        - kind: added
+          description: Deployment icons defined through Helm chart
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.7-beta.2
+    created: "2022-08-28T17:30:58.766356188Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.7.1
+    description: A Helm chart for Platz.io
+    digest: a00a2f96d96d2e0a7cbd070a9743608ed86c4f33048855254c226819425f7521
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.7-beta.2/platzio-0.4.7-beta.2.tgz
+    version: 0.4.7-beta.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
           description: Deployment icons defined through Helm chart
       artifacthub.io/prerelease: "false"
     apiVersion: v2
@@ -1386,4 +1416,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-28T05:42:53.298646842Z"
+generated: "2022-08-28T17:30:58.766921004Z"
