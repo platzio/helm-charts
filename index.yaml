@@ -7,6 +7,40 @@ entries:
           description: New logo and mascot by @vmalloc!
         - kind: added
           description: Deployment icons defined through Helm chart
+        - kind: added
+          description: Support for ingress classes
+        - kind: fixed
+          description: Custom resources with no lifecycle hooks are automatically marked as ready
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.7-beta.3
+    created: "2022-09-03T08:38:41.571822458Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.7.1
+    description: A Helm chart for Platz.io
+    digest: 0993da410798d80c5f70eaf6f03f0491131532c7f1aa66163e98fa42ef93b547
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.7-beta.3/platzio-0.4.7-beta.3.tgz
+    version: 0.4.7-beta.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: New logo and mascot by @vmalloc!
+        - kind: added
+          description: Deployment icons defined through Helm chart
       artifacthub.io/prerelease: "false"
     apiVersion: v2
     appVersion: 0.4.7-beta.2
@@ -1416,4 +1450,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-28T17:30:58.766921004Z"
+generated: "2022-09-03T08:38:41.572508339Z"
