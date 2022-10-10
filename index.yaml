@@ -11,6 +11,46 @@ entries:
           description: Support for ingress classes
         - kind: fixed
           description: Custom resources with no lifecycle hooks are automatically marked as ready
+        - kind: changed
+          description: chart-ext was moved from the backend to a separate crate
+        - kind: fixed
+          description: A global admin can see and automatically be an admin of all envs
+        - kind: fixed
+          description: Display deployment resource status in resource page
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.7
+    created: "2022-10-10T08:22:27.611513194Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.8
+    description: A Helm chart for Platz.io
+    digest: 4d37fa32afa2bb393a29e03794a05cd7ecea7c58f29af366998727013fe49259
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.7/platzio-0.4.7.tgz
+    version: 0.4.7
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: New logo and mascot by @vmalloc!
+        - kind: added
+          description: Deployment icons defined through Helm chart
+        - kind: added
+          description: Support for ingress classes
+        - kind: fixed
+          description: Custom resources with no lifecycle hooks are automatically marked as ready
       artifacthub.io/prerelease: "false"
     apiVersion: v2
     appVersion: 0.4.7-beta.3
@@ -1450,4 +1490,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-03T08:38:41.572508339Z"
+generated: "2022-10-10T08:22:27.612150104Z"
