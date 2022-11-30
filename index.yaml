@@ -3,6 +3,56 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: fixed
+          description: Fix task failure/success output manipulation (thanks @vmalloc!)
+        - kind: fixed
+          description: Avoid refreshing credentials of disabled deployments
+        - kind: fixed
+          description: k8s-agent will not exit on task failure anymore
+        - kind: added
+          description: Release builds now have debug info and show full backtraces (thanks @vmalloc!)
+        - kind: fixed
+          description: Fixed some charts missing when using ?in_use=true in API (thanks @vmalloc!)
+        - kind: added
+          description: Added context to errors around Helm chart pulling
+        - kind: fixed
+          description: Handle disconnections from control plane when running task pods (thanks @vmalloc!)
+        - kind: fixed
+          description: Fixed chart-discovery getting OOMKilled when scrubbing existing tags on startup
+        - kind: fixed
+          description: Fixed frontend crash when a chart had no features
+        - kind: fixed
+          description: Fixed to show registry icons when no icon is defined in chart features
+        - kind: fixed
+          description: Fix undefined error in findCollectionDependencies (thanks @vmalloc!)
+        - kind: fixed
+          description: Added log for missing charts in findCollectionDependencies (thanks @vmalloc!)
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.4.8
+    created: "2022-11-30T12:13:28.771142514Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.8
+    description: A Helm chart for Platz.io
+    digest: a454f2d2ea9d1f425702c649cc1c97a2f69c999a8a777d4631d0ff83efa06930
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.8/platzio-0.4.8.tgz
+    version: 0.4.8
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: New logo and mascot by @vmalloc!
         - kind: added
@@ -1490,4 +1540,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-10T08:22:27.612150104Z"
+generated: "2022-11-30T12:13:28.771649713Z"
