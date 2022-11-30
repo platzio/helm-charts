@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "0.4.7"
-version: "0.4.7"
+appVersion: "0.4.8"
+version: "0.4.8"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
@@ -22,17 +22,27 @@ dependencies:
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/changes: |
-    - kind: added
-      description: New logo and mascot by @vmalloc!
-    - kind: added
-      description: Deployment icons defined through Helm chart
-    - kind: added
-      description: Support for ingress classes
     - kind: fixed
-      description: Custom resources with no lifecycle hooks are automatically marked as ready
-    - kind: changed
-      description: chart-ext was moved from the backend to a separate crate
+      description: Fix task failure/success output manipulation (thanks @vmalloc!)
     - kind: fixed
-      description: A global admin can see and automatically be an admin of all envs
+      description: Avoid refreshing credentials of disabled deployments
     - kind: fixed
-      description: Display deployment resource status in resource page
+      description: k8s-agent will not exit on task failure anymore
+    - kind: added
+      description: Release builds now have debug info and show full backtraces (thanks @vmalloc!)
+    - kind: fixed
+      description: Fixed some charts missing when using ?in_use=true in API (thanks @vmalloc!)
+    - kind: added
+      description: Added context to errors around Helm chart pulling
+    - kind: fixed
+      description: Handle disconnections from control plane when running task pods (thanks @vmalloc!)
+    - kind: fixed
+      description: Fixed chart-discovery getting OOMKilled when scrubbing existing tags on startup
+    - kind: fixed
+      description: Fixed frontend crash when a chart had no features
+    - kind: fixed
+      description: Fixed to show registry icons when no icon is defined in chart features
+    - kind: fixed
+      description: Fix undefined error in findCollectionDependencies (thanks @vmalloc!)
+    - kind: fixed
+      description: Added log for missing charts in findCollectionDependencies (thanks @vmalloc!)
