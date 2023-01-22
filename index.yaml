@@ -4,6 +4,48 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
+          description: Added retries for helm task pod creation/deletion
+        - kind: fixed
+          description: Added SIGTERM and SIGINT handlers (thanks @vmalloc)
+        - kind: added
+          description: Sort API v2 of deployment tasks by creation (thanks @ayalash)
+        - kind: changed
+          description: Switched from rusoto to official aws-sdk
+        - kind: fixed
+          description: Fixed some charts missing in initial frontend load (thanks @vmalloc)
+        - kind: added
+          description: Add 'active_only' and 'created_from' filtering for deployment tasks (thanks @ayalash)
+        - kind: added
+          description: API for getting the backend version (thanks @ayalash)
+        - kind: fixed
+          description: Ignore ECR events with an empty image_tag
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.4.9-beta.1
+    created: "2023-01-22T09:46:35.214323401Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.8
+    description: A Helm chart for Platz.io
+    digest: 6fabb22f2b31198bfe3603f62446820ce0fd6da1c7a3a8bb781d22176f3aa82d
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.9-beta.1/platzio-0.4.9-beta.1.tgz
+    version: 0.4.9-beta.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
           description: Fix task failure/success output manipulation (thanks @vmalloc!)
         - kind: fixed
           description: Avoid refreshing credentials of disabled deployments
@@ -1540,4 +1582,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-30T12:13:28.771649713Z"
+generated: "2023-01-22T09:46:35.215122192Z"
