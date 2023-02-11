@@ -129,8 +129,8 @@ backupJob:
     repository: popen2/postgres-backup-s3
     tag: v14.1
   serviceAccount:
-    annotations: platz-backup
-    name: ""
+    name: platz-backup
+    annotations: {}
 
 postgresql:
   enabled: true
