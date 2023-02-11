@@ -12,8 +12,11 @@ spec:
       platzService: api
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: {{ .Values.api.service.containerPort | quote }}
+        prometheus.io/path: /metrics
+      {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
