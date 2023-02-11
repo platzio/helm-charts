@@ -31,6 +31,58 @@ entries:
           description: Added an opt-in backup cronjob
       artifacthub.io/prerelease: "true"
     apiVersion: v2
+    appVersion: 0.4.9-beta.7
+    created: "2023-02-11T08:20:05.984044789Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.8
+    description: A Helm chart for Platz.io
+    digest: bff6bfdd5c31ec7f915bd6aa733f9cbfba18622a327b2188c37f0f56bd65392f
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.9-beta.7/platzio-0.4.9-beta.7.tgz
+    version: 0.4.9-beta.7
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Added retries for helm task pod creation/deletion
+        - kind: fixed
+          description: Added SIGTERM and SIGINT handlers (thanks @vmalloc)
+        - kind: added
+          description: Sort API v2 of deployment tasks by creation (thanks @ayalash)
+        - kind: changed
+          description: Switched from rusoto to official aws-sdk
+        - kind: fixed
+          description: Fixed some charts missing in initial frontend load (thanks @vmalloc)
+        - kind: added
+          description: Add 'active_only' and 'created_from' filtering for deployment tasks (thanks @ayalash)
+        - kind: added
+          description: API for getting the backend version (thanks @ayalash)
+        - kind: fixed
+          description: Ignore ECR events with an empty image_tag
+        - kind: changed
+          description: Upgraded base image v4 (Helm 3.11.0 and latest Ubuntu)
+        - kind: added
+          description: Prometheus metrics (thanks @ayalash)
+        - kind: added
+          description: User API tokens (thanks @ayalash)
+        - kind: fixed
+          description: Fixed k8s-agent crash when cluster discovery fails
+        - kind: added
+          description: Added an opt-in backup cronjob
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
     appVersion: 0.4.9-beta.6
     created: "2023-02-11T07:25:47.780351805Z"
     dependencies:
@@ -1766,4 +1818,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-11T07:25:47.781114453Z"
+generated: "2023-02-11T08:20:05.985124709Z"
