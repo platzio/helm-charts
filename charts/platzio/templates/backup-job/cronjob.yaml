@@ -1,0 +1,48 @@
+{{- if and .Values.backupJob.config.bucketName .Values.backupJob.config.bucketRegion -}}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "chart.fullname" . }}-backup
+spec:
+  schedule: "0 * * * *"
+  concurrencyPolicy: Replace
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          serviceAccountName: {{ .Release.Name }}-backup
+          containers:
+            - name: backup
+              image: "{{ .Values.backupJob.image.repository }}:{{ .Values.backupJob.image.tag }}"
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: PGHOST
+                  value: {{ include "chart.databaseHost" . }}
+                - name: PGPORT
+                  value: "5432"
+                - name: PGUSER
+                  value: {{ .Values.postgresql.auth.username }}
+                - name: PGPASSWORD
+                  value: {{ .Values.postgresql.auth.password }}
+                - name: PGDATABASE
+                  value: {{ .Values.postgresql.auth.database }}
+                - name: BUCKET_NAME
+                  value: {{ .Values.backupJob.config.bucketName }}
+                - name: BUCKET_REGION
+                  value: {{ .Values.backupJob.config.bucketRegion }}
+                - name: S3_PREFIX
+                  value: {{ .Values.config.bucketPrefix }}
+                - name: ENCRYPTION_KEY
+                  valueFrom:
+                    {{- toYaml .Values.backupJob.config.encryptionKeyValueFrom | nindent 20 }}
+              volumeMounts:
+                - name: homedir
+                  mountPath: /home/user
+          restartPolicy: Never
+          volumes:
+            - name: homedir
+              emptyDir: {}
+{{- end }}

@@ -116,6 +116,22 @@ frontend:
     name: platz-frontend
     annotations: {}
 
+backupJob:
+  config:
+    bucketName: ""
+    bucketRegion: ""
+    bucketPrefix: ""
+    encryptionKeyValueFrom:
+      secretKeyRef:
+        name: backup-config
+        key: encryptionKey
+  image:
+    repository: popen2/postgres-backup-s3
+    tag: v14.1
+  serviceAccount:
+    annotations: platz-backup
+    name: ""
+
 postgresql:
   enabled: true
   nameOverride: postgresql
