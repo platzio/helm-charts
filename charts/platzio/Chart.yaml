@@ -9,7 +9,7 @@ keywords:
   - chart
   - cd
   - continuous deployment
-icon: https://raw.githubusercontent.com/platzio/frontend/main/public/Logo.svg
+icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
 sources:
   - https://github.com/platzio
 
