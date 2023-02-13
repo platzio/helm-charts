@@ -140,6 +140,12 @@ postgresql:
     username: platz
     password: platz
     database: platz
+  primary:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+  readReplicas:
+    nodeSelector:
+      kubernetes.io/arch: amd64
 
 imagePullSecrets: []
 nameOverride: ""
