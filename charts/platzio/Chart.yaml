@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "0.4.9-beta.8"
-version: "0.4.9-beta.8"
+appVersion: "0.4.9-beta.9"
+version: "0.4.9-beta.9"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
@@ -48,3 +48,5 @@ annotations:
       description: Fixed k8s-agent crash when cluster discovery fails
     - kind: added
       description: Added an opt-in backup cronjob
+    - kind: added
+      description: Multi-arch support (AMD64 and ARM64)
