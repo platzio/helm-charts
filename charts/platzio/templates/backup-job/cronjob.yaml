@@ -34,7 +34,7 @@ spec:
                 - name: BUCKET_REGION
                   value: {{ .Values.backupJob.config.bucketRegion }}
                 - name: S3_PREFIX
-                  value: {{ .Values.config.bucketPrefix }}
+                  value: {{ .Values.backupJob.config.bucketPrefix }}
                 - name: ENCRYPTION_KEY
                   valueFrom:
                     {{- toYaml .Values.backupJob.config.encryptionKeyValueFrom | nindent 20 }}
