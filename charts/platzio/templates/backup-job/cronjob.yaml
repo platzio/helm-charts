@@ -1,4 +1,4 @@
-{{- if and .Values.backupJob.config.bucketName .Values.backupJob.config.bucketRegion -}}
+{{- if .Values.backupJob.enabled -}}
 apiVersion: batch/v1
 kind: CronJob
 metadata:

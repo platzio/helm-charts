@@ -117,6 +117,7 @@ frontend:
     annotations: {}
 
 backupJob:
+  enabled: false
   config:
     bucketName: ""
     bucketRegion: ""
