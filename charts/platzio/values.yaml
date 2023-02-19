@@ -1,11 +1,11 @@
 images:
   frontend:
     repository: platzio/frontend
-    tag: v0.4.9-beta.9
+    tag: v0.4.9
     pullPolicy: IfNotPresent
   backend:
     repository: platzio/backend
-    tag: v0.4.9-beta.8
+    tag: v0.4.9
     pullPolicy: IfNotPresent
   helm:
     repository: platzio/base
@@ -128,7 +128,7 @@ backupJob:
         key: encryptionKey
   image:
     repository: popen2/postgres-backup-s3
-    tag: v14.1
+    tag: v14.2
   serviceAccount:
     name: platz-backup
     annotations: {}
