@@ -4,6 +4,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
+          description: Fix how boolean values are displayed/initialized in UI values
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.4.10-beta.1
+    created: "2023-02-25T10:40:14.933985799Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    description: A Helm chart for Platz.io
+    digest: acd7989fd4afd2f09d8c927bedb0b739f5d98fcc08c420efff63994c2f785af6
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.4.10-beta.1/platzio-0.4.10-beta.1.tgz
+    version: 0.4.10-beta.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
           description: Added retries for helm task pod creation/deletion
         - kind: fixed
           description: Added SIGTERM and SIGINT handlers (thanks @vmalloc)
@@ -1978,4 +2006,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-19T08:23:01.859068826Z"
+generated: "2023-02-25T10:40:14.934667109Z"
