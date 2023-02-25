@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "0.4.9"
-version: "0.4.9"
+appVersion: "0.4.10-beta.1"
+version: "0.4.10-beta.1"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
@@ -20,33 +20,7 @@ dependencies:
     condition: postgresql.enabled
 
 annotations:
-  artifacthub.io/prerelease: "false"
+  artifacthub.io/prerelease: "true"
   artifacthub.io/changes: |
     - kind: fixed
-      description: Added retries for helm task pod creation/deletion
-    - kind: fixed
-      description: Added SIGTERM and SIGINT handlers (thanks @vmalloc)
-    - kind: added
-      description: Sort API v2 of deployment tasks by creation (thanks @ayalash)
-    - kind: changed
-      description: Switched from rusoto to official aws-sdk
-    - kind: fixed
-      description: Fixed some charts missing in initial frontend load (thanks @vmalloc)
-    - kind: added
-      description: Add 'active_only' and 'created_from' filtering for deployment tasks (thanks @ayalash)
-    - kind: added
-      description: API for getting the backend version (thanks @ayalash)
-    - kind: fixed
-      description: Ignore ECR events with an empty image_tag
-    - kind: changed
-      description: Upgraded base image v4 (Helm 3.11.0 and latest Ubuntu)
-    - kind: added
-      description: Prometheus metrics (thanks @ayalash)
-    - kind: added
-      description: User API tokens (thanks @ayalash)
-    - kind: fixed
-      description: Fixed k8s-agent crash when cluster discovery fails
-    - kind: added
-      description: Added an opt-in backup cronjob
-    - kind: added
-      description: Multi-arch support (AMD64 and ARM64)
+      description: Fix how boolean values are displayed/initialized in UI values
