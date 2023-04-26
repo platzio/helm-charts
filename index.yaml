@@ -3,6 +3,38 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: changed
+          description: Upgraded to diesel-2.0
+        - kind: added
+          description: Chart.yaml is now parsed for version and git metadata
+        - kind: added
+          description: Chart playground for testing chart extensions
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.5.0-beta.2
+    created: "2023-04-26T10:37:26.660734157Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    description: A Helm chart for Platz.io
+    digest: d5d65ef3858713abcfafdd7d02700c841539efc73345a15506788646eefeff31
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.5.0-beta.2/platzio-0.5.0-beta.2.tgz
+    version: 0.5.0-beta.2
+  - annotations:
+      artifacthub.io/changes: |
         - kind: fixed
           description: Fix how boolean values are displayed/initialized in UI values
       artifacthub.io/prerelease: "true"
@@ -2006,4 +2038,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-25T10:40:14.934667109Z"
+generated: "2023-04-26T10:37:26.661725001Z"
