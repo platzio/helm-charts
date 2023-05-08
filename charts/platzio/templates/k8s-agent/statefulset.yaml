@@ -1,4 +1,4 @@
-{{- range .Values.k8sAgents }}
+{{- range .Values.k8sAgent.instances }}
 {{- $serviceAccountName := default (printf "platz-k8s-agent-%s" .name) .serviceAccount.name }}
 ---
 apiVersion: apps/v1
@@ -55,7 +55,7 @@ spec:
             - name: RUST_BACKTRACE
               value: '1'
           resources:
-            {{- toYaml .resources | nindent 12 }}
+            {{- toYaml $.Values.k8sAgent.resources | nindent 12 }}
       {{- with $.Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

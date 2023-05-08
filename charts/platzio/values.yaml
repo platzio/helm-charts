@@ -88,17 +88,18 @@ statusUpdates:
     name: platz-status-updates
     annotations: {}
 
-k8sAgents:
-  - name: default
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        memory: 256Mi
-    serviceAccount:
-      name: ""
-      annotations: {}
+k8sAgent:
+  instances:
+    - name: default
+      serviceAccount:
+        name: ""
+        annotations: {}
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 256Mi
 
 frontend:
   resources:
