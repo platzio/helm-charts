@@ -41,7 +41,7 @@ spec:
           imagePullPolicy: {{ $.Values.images.backend.pullPolicy }}
           command:
             - /root/platz-chart-discovery
-            {{- if eq $chartDiscoveryIndex 0 }}
+            {{- if $chartDiscovery.enableTagParser }}
             - --enable-tag-parser
             {{- end }}
           env:

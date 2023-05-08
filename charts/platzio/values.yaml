@@ -52,6 +52,7 @@ api:
 chartDiscovery:
   instances:
     - name: default
+      enableTagParser: false
       ecrEvents:
         queueName: ""
         regionName: ""
