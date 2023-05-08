@@ -42,6 +42,7 @@ spec:
               protocol: TCP
           command:
             - /root/platz-api
+            - run
             {{- range $adminEmail := .Values.auth.adminEmails }}
             - --admin-email={{ $adminEmail }}
             {{- end }}
