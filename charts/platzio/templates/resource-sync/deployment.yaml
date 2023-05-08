@@ -35,8 +35,6 @@ spec:
           imagePullPolicy: {{ .Values.images.backend.pullPolicy }}
           command:
             - /root/platz-resource-sync
-            - --debug
-            - --all-debug
           env:
             - name: DATABASE_URL
               value: '{{ include "chart.databaseUrl" . }}'
