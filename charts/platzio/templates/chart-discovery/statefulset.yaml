@@ -1,20 +1,20 @@
-{{- range $chartDiscoveryIndex, $chartDiscovery := .Values.chartDiscovery.instances }}
-{{- $serviceAccountName := default (printf "platz-chart-discovery-%s" $chartDiscovery.name) .serviceAccount.name }}
+{{- range .Values.chartDiscovery.instances }}
+{{- $serviceAccountName := default (printf "platz-chart-discovery-%s" .name) .serviceAccount.name }}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "chart.fullname" $ }}-chart-discovery
+  name: {{ include "chart.fullname" $ }}-chart-discovery-{{ .name }}
   labels:
     {{- include "chart.labels" $ | nindent 4 }}
 spec:
-  serviceName: chart-discovery-{{ $chartDiscovery.name }}
+  serviceName: chart-discovery-{{ .name }}
   replicas: 1
   selector:
     matchLabels:
       {{- include "chart.selectorLabels" $ | nindent 6 }}
       platzService: chart-discovery
-      chartDiscoveryInstance: {{ $chartDiscovery.name }}
+      chartDiscoveryInstance: {{ .name }}
   template:
     metadata:
       {{- with $.Values.podAnnotations }}
@@ -24,7 +24,7 @@ spec:
       labels:
         {{- include "chart.selectorLabels" $ | nindent 8 }}
         platzService: chart-discovery
-        chartDiscoveryInstance: {{ $chartDiscovery.name }}
+        chartDiscoveryInstance: {{ .name }}
     spec:
       {{- with $.Values.imagePullSecrets }}
       imagePullSecrets:
@@ -41,7 +41,7 @@ spec:
           imagePullPolicy: {{ $.Values.images.backend.pullPolicy }}
           command:
             - /root/platz-chart-discovery
-            {{- if $chartDiscovery.enableTagParser }}
+            {{- if .enableTagParser }}
             - --enable-tag-parser
             {{- end }}
           env:
@@ -50,9 +50,9 @@ spec:
             - name: PLATZ_OWN_URL
               value: '{{ include "platz.ownUrl" $ }}'
             - name: PLATZ_ECR_EVENTS_QUEUE
-              value: '{{ $chartDiscovery.ecrEvents.queueName }}'
+              value: '{{ .ecrEvents.queueName }}'
             - name: PLATZ_ECR_EVENTS_REGION
-              value: '{{ $chartDiscovery.ecrEvents.regionName }}'
+              value: '{{ .ecrEvents.regionName }}'
             - name: RUST_BACKTRACE
               value: '1'
           resources:
