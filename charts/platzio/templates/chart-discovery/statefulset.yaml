@@ -1,0 +1,72 @@
+{{- range $chartDiscoveryIndex, $chartDiscovery := .Values.chartDiscovery.instances }}
+{{- $serviceAccountName := default (printf "platz-chart-discovery-%s" $chartDiscovery.name) .serviceAccount.name }}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "chart.fullname" $ }}-chart-discovery
+  labels:
+    {{- include "chart.labels" $ | nindent 4 }}
+spec:
+  serviceName: chart-discovery-{{ $chartDiscovery.name }}
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "chart.selectorLabels" $ | nindent 6 }}
+      platzService: chart-discovery
+      chartDiscoveryInstance: {{ $chartDiscovery.name }}
+  template:
+    metadata:
+      {{- with $.Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "chart.selectorLabels" $ | nindent 8 }}
+        platzService: chart-discovery
+        chartDiscoveryInstance: {{ $chartDiscovery.name }}
+    spec:
+      {{- with $.Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ $serviceAccountName }}
+      securityContext:
+        {{- toYaml $.Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: chart-discovery
+          securityContext:
+            {{- toYaml $.Values.securityContext | nindent 12 }}
+          image: "{{ $.Values.images.backend.repository }}:{{ $.Values.images.backend.tag }}"
+          imagePullPolicy: {{ $.Values.images.backend.pullPolicy }}
+          command:
+            - /root/platz-chart-discovery
+            {{- if eq $chartDiscoveryIndex 0 }}
+            - --enable-tag-parser
+            {{- end }}
+          env:
+            - name: DATABASE_URL
+              value: '{{ include "chart.databaseUrl" $ }}'
+            - name: PLATZ_OWN_URL
+              value: '{{ include "platz.ownUrl" $ }}'
+            - name: PLATZ_ECR_EVENTS_QUEUE
+              value: '{{ $chartDiscovery.ecrEvents.queueName }}'
+            - name: PLATZ_ECR_EVENTS_REGION
+              value: '{{ $chartDiscovery.ecrEvents.regionName }}'
+            - name: RUST_BACKTRACE
+              value: '1'
+          resources:
+            {{- toYaml $.Values.chartDiscovery.resources | nindent 12 }}
+      {{- with $.Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

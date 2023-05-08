@@ -5,7 +5,7 @@ images:
     pullPolicy: IfNotPresent
   backend:
     repository: platzio/backend
-    tag: v0.5.0-beta.2
+    tag: v0.5.0-beta.4
     pullPolicy: IfNotPresent
   helm:
     repository: platzio/base
@@ -50,19 +50,20 @@ api:
     containerPort: 3000
 
 chartDiscovery:
-  ecr:
-    queueName: ""
-    regionName: ""
+  instances:
+    - name: default
+      ecrEvents:
+        queueName: ""
+        regionName: ""
+      serviceAccount:
+        name: ""
+        annotations: {}
   resources:
     requests:
       cpu: 100m
       memory: 128Mi
     limits:
       memory: 256Mi
-  replicaCount: 1
-  serviceAccount:
-    name: platz-chart-discovery
-    annotations: {}
 
 resourceSync:
   resources:
