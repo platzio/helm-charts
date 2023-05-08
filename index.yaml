@@ -11,6 +11,42 @@ entries:
           description: Chart playground for testing chart extensions
         - kind: added
           description: Allow running multiple chart-discovery workers
+        - kind: changed
+          description: Tag parsing has to be explicitly enabled in one chart-discovery instance
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.5.0-beta.5
+    created: "2023-05-08T07:20:06.68585909Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    description: A Helm chart for Platz.io
+    digest: 974b6b7f77b240d7356964e48d2ba62a64b64cfc13035c641514b4eb0efbdad6
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.5.0-beta.5/platzio-0.5.0-beta.5.tgz
+    version: 0.5.0-beta.5
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Upgraded to diesel-2.0
+        - kind: added
+          description: Chart.yaml is now parsed for version and git metadata
+        - kind: added
+          description: Chart playground for testing chart extensions
+        - kind: added
+          description: Allow running multiple chart-discovery workers
       artifacthub.io/prerelease: "true"
     apiVersion: v2
     appVersion: 0.5.0-beta.4
@@ -2104,4 +2140,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-08T05:41:26.516029273Z"
+generated: "2023-05-08T07:20:06.686886301Z"
