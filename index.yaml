@@ -2,6 +2,44 @@ apiVersion: v1
 entries:
   platzio:
   - annotations:
+      artifacthub.io/changes: "- kind: changed\n  description: Upgraded to diesel-2.0\n-
+        kind: added\n  description: Chart.yaml is now parsed for version and git metadata\n-
+        kind: added\n  description: Chart playground for testing chart extensions\n-
+        kind: added\n  description: Allow running multiple chart-discovery workers\n-
+        kind: changed\n  description: Tag parsing has to be explicitly enabled in
+        one chart-discovery instance\n- kind: added\n  description: OpenAPI schemas
+        are now generated on backend build and saved for each release\n- kind: changed\n
+        \ description: New Kubernetes clusters are now ignored by default and have
+        to be enabled manually (thanks @ayalash!)\n- kind: fixed\n  description: Fixed
+        metrics for task statuses missing zero values (thanks @vmalloc!)\n- kind:
+        changed\n  description: The frontend now uses an SDK generated from an OpenAPI
+        schema\n- kind: added\n  description: Dark mode \U0001F31A\U0001F389 (thanks
+        Bootstrap!)\n"
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.5.0-beta.8
+    created: "2023-06-24T17:52:47.143095877Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    description: A Helm chart for Platz.io
+    digest: dcd9875984bcacda3055eca417172e2ac94e0756f13d95d1e0d8024f5f141042
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.5.0-beta.8/platzio-0.5.0-beta.8.tgz
+    version: 0.5.0-beta.8
+  - annotations:
       artifacthub.io/changes: |
         - kind: changed
           description: Upgraded to diesel-2.0
@@ -2212,4 +2250,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-08T09:43:44.457662697Z"
+generated: "2023-06-24T17:52:47.143842971Z"
