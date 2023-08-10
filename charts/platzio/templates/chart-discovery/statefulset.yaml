@@ -55,6 +55,8 @@ spec:
               value: '{{ .ecrEvents.regionName }}'
             - name: RUST_BACKTRACE
               value: '1'
+            - name: RUST_LOG
+              value: 'debug,hyper=error,rustls=error,tower=error'
           resources:
             {{- toYaml $.Values.chartDiscovery.resources | nindent 12 }}
       {{- with $.Values.nodeSelector }}

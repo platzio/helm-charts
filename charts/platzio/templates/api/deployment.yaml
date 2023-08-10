@@ -59,6 +59,8 @@ spec:
               {{- toYaml .Values.auth.oidc.clientSecret | nindent 14 }}
             - name: RUST_BACKTRACE
               value: '1'
+            - name: RUST_LOG
+              value: 'debug,hyper=error,rustls=error,tower=error'
           livenessProbe:
             httpGet:
               path: /status
