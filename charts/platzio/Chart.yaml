@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "0.5.0"
-version: "0.5.0"
+appVersion: "0.5.2"
+version: "0.5.2"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
@@ -22,23 +22,13 @@ dependencies:
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/changes: |
-    - kind: fixed
-      description: Fixed metrics for task statuses missing zero values (thanks @vmalloc!)
     - kind: added
-      description: Dark mode 🌚🎉 (thanks Bootstrap!)
+      description: Added env_id filter for /api/v2/deployments (thanks @ayalash!)
     - kind: added
-      description: Chart.yaml is now parsed for version and git metadata
+      description: Users can now be deactivated (thanks @ayalash!)
     - kind: added
-      description: Chart playground for testing chart extensions
+      description: Env deletion (thanks @ayalash!)
     - kind: added
-      description: Allow running multiple chart-discovery workers
+      description: New showIf options for UI schema inputs (thanks @pyros82!)
     - kind: added
-      description: OpenAPI schemas are now generated on backend build and saved for each release
-    - kind: changed
-      description: Tag parsing has to be explicitly enabled in one chart-discovery instance
-    - kind: changed
-      description: New Kubernetes clusters are now ignored by default and have to be enabled manually (thanks @ayalash!)
-    - kind: changed
-      description: The frontend now uses an SDK generated from an OpenAPI schema
-    - kind: changed
-      description: Upgraded to diesel-2.0
+      description: Pagination for Helm registry page and deployment task history
