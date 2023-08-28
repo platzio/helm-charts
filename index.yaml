@@ -3,6 +3,42 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: fixed
+          description: Fixed pagination showing wrong page numbers or ellipsis
+        - kind: fixed
+          description: /api/v2/k8s-clusters/{id} always returning NOT FOUND
+        - kind: fixed
+          description: Deployment page overview now has a border
+        - kind: fixed
+          description: Clicking logs uses offcanvas instead of expanding inline
+        - kind: fixed
+          description: Increased k8s-agent memory limit to 1Gi
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.5.3-beta.1
+    created: "2023-08-28T22:23:23.806342491Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    description: A Helm chart for Platz.io
+    digest: 4601528791fa0e8e6492d3f8d5614336f180f8b24d9723e914087f18d9e06d61
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.5.3-beta.1/platzio-0.5.3-beta.1.tgz
+    version: 0.5.3-beta.1
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: Added env_id filter for /api/v2/deployments (thanks @ayalash!)
         - kind: added
@@ -2323,4 +2359,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-20T09:24:22.493075975Z"
+generated: "2023-08-28T22:23:23.807328822Z"
