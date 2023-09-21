@@ -13,6 +13,48 @@ entries:
           description: Clicking logs uses offcanvas instead of expanding inline
         - kind: fixed
           description: Increased k8s-agent memory limit to 1Gi
+        - kind: fixed
+          description: Fix actions not shown when allowed_on is empty (thanks @ayalash)
+        - kind: fixed
+          description: Fix deployment name input to allow dashes (thanks @ayalash)
+        - kind: added
+          description: Secrets not created when they depend on missing optional/conditional inputs (thanks @pyros82)
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.5.3-beta.3
+    created: "2023-09-21T05:10:53.136303818Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    description: A Helm chart for Platz.io
+    digest: 932f7eabee68d70488b8e8a407ad9427a0d475494a3b990038cbed2995a52d9c
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.5.3-beta.3/platzio-0.5.3-beta.3.tgz
+    version: 0.5.3-beta.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Fixed pagination showing wrong page numbers or ellipsis
+        - kind: fixed
+          description: /api/v2/k8s-clusters/{id} always returning NOT FOUND
+        - kind: fixed
+          description: Deployment page overview now has a border
+        - kind: fixed
+          description: Clicking logs uses offcanvas instead of expanding inline
+        - kind: fixed
+          description: Increased k8s-agent memory limit to 1Gi
       artifacthub.io/prerelease: "true"
     apiVersion: v2
     appVersion: 0.5.3-beta.1
@@ -2359,4 +2401,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-28T22:23:23.807328822Z"
+generated: "2023-09-21T05:10:53.137635928Z"
