@@ -3,6 +3,36 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: added
+          description: Bot users
+        - kind: added
+          description: ID-based Helm chart kinds
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.6.0-beta.3
+    created: "2024-09-11T16:41:43.25484295Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    description: A Helm chart for Platz.io
+    digest: d9235980cce1ff501b8aa10876e67cbc530dfbd8ad94f4d46815bd370cc7ff5d
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.6.0-beta.3/platzio-0.6.0-beta.3.tgz
+    version: 0.6.0-beta.3
+  - annotations:
+      artifacthub.io/changes: |
         - kind: fixed
           description: Fixed pagination showing wrong page numbers or ellipsis
         - kind: fixed
@@ -2401,4 +2431,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-21T05:10:53.137635928Z"
+generated: "2024-09-11T16:41:43.255562547Z"
