@@ -26,3 +26,5 @@ annotations:
       description: Bot users
     - kind: added
       description: ID-based Helm chart kinds
+    - kind: changed
+      description: Removed support for /api/v1

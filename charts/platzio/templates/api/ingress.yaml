@@ -38,9 +38,8 @@ spec:
     {{- range $rule := $.Values.ingress.rules }}
     - http:
         paths:
-          {{- range $version := $.Values.api.enabledVersions }}
           {{- range $path := $rule.paths }}
-          - path: {{ trimSuffix "/" $path.path }}/api/{{ $version }}
+          - path: {{ trimSuffix "/" $path.path }}/api/
             {{- if and $path.pathType (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
             pathType: {{ $path.pathType }}
             {{- end }}
@@ -54,7 +53,6 @@ spec:
               serviceName: {{ include "chart.fullname" $ }}-api
               servicePort: {{ $.Values.api.service.port }}
               {{- end }}
-          {{- end }}
           {{- end }}
       {{- if $rule.host }}
       host: {{ $rule.host | quote }}

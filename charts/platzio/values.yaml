@@ -31,9 +31,6 @@ auth:
           key: clientSecret
 
 api:
-  enabledVersions:
-    - v1
-    - v2
   resources:
     requests:
       cpu: 100m
