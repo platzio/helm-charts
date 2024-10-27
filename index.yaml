@@ -11,6 +11,38 @@ entries:
           description: Removed support for /api/v1
       artifacthub.io/prerelease: "true"
     apiVersion: v2
+    appVersion: 0.6.0-beta.5
+    created: "2024-10-27T06:03:41.341955807Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    description: A Helm chart for Platz.io
+    digest: d0e89cb742a1e9aab5fb7767a0bf46dd233a11243a5dedcfdc1161eb4b27e7cf
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.6.0-beta.5/platzio-0.6.0-beta.5.tgz
+    version: 0.6.0-beta.5
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Bot users
+        - kind: added
+          description: ID-based Helm chart kinds
+        - kind: changed
+          description: Removed support for /api/v1
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
     appVersion: 0.6.0-beta.4
     created: "2024-10-10T07:39:32.197307892Z"
     dependencies:
@@ -2463,4 +2495,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-10T07:39:32.19804697Z"
+generated: "2024-10-27T06:03:41.342696022Z"
