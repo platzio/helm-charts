@@ -3,6 +3,29 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: removed
+          description: Removed Bitnami PostgreSQL chart dependency
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.6.3
+    created: "2025-09-21T07:27:31.851696571Z"
+    description: A Helm chart for Platz.io
+    digest: 151857b49a666755d7e022b8270ed58126b0d4b4c3d822b3e28f2f5b4d5c5d65
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.6.3/platzio-0.6.3.tgz
+    version: 0.6.3
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: Bot users
         - kind: added
@@ -2595,4 +2618,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2025-08-10T11:42:01.661158372Z"
+generated: "2025-09-21T07:27:31.852611536Z"
