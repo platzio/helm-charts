@@ -19,16 +19,7 @@ spec:
               image: "{{ .Values.backupJob.image.repository }}:{{ .Values.backupJob.image.tag }}"
               imagePullPolicy: IfNotPresent
               env:
-                - name: PGHOST
-                  value: {{ include "chart.databaseHost" . }}
-                - name: PGPORT
-                  value: "5432"
-                - name: PGUSER
-                  value: {{ .Values.postgresql.auth.username }}
-                - name: PGPASSWORD
-                  value: {{ .Values.postgresql.auth.password }}
-                - name: PGDATABASE
-                  value: {{ .Values.postgresql.auth.database }}
+                {{ include "database.envVars" $ | nindent 16 }}
                 - name: BUCKET_NAME
                   value: {{ .Values.backupJob.config.bucketName }}
                 - name: BUCKET_REGION

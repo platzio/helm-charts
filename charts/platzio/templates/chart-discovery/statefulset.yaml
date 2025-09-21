@@ -45,8 +45,7 @@ spec:
             - --enable-tag-parser
             {{- end }}
           env:
-            - name: DATABASE_URL
-              value: '{{ include "chart.databaseUrl" $ }}'
+            {{ include "database.envVars" $ | nindent 12 }}
             - name: PLATZ_OWN_URL
               value: '{{ include "platz.ownUrl" $ }}'
             - name: PLATZ_ECR_EVENTS_QUEUE

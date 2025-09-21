@@ -47,8 +47,7 @@ spec:
             - --admin-email={{ $adminEmail }}
             {{- end }}
           env:
-            - name: DATABASE_URL
-              value: '{{ include "chart.databaseUrl" . }}'
+            {{ include "database.envVars" $ | nindent 12 }}
             - name: PLATZ_OWN_URL
               value: '{{ include "platz.ownUrl" . }}'
             - name: OIDC_SERVER_URL

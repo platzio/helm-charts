@@ -50,21 +50,32 @@ app.kubernetes.io/name: {{ include "chart.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{- define "chart.databaseHost" -}}
-{{- printf "%s-%s.%s.svc" .Release.Name "postgresql" .Release.Namespace }}
-{{- end }}
-
-{{- define "chart.databaseUrl" -}}
-{{- if .Values.postgresql.databaseUrlOverride }}
-{{- .Values.postgresql.databaseUrlOverride }}
-{{- else }}
-{{- $dbUsername := .Values.postgresql.auth.username -}}
-{{- $dbPassword := .Values.postgresql.auth.password -}}
-{{- $dbHostname := include "chart.databaseHost" . -}}
-{{- $dbPort := "5432" -}}
-{{- $dbDatabase := .Values.postgresql.auth.database -}}
-{{- printf "postgres://%s:%s@%s:%s/%s" $dbUsername $dbPassword $dbHostname $dbPort $dbDatabase }}
-{{- end }}
+{{- define "database.envVars" }}
+- name: PGHOST
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.database.secretName }}
+      key: PGHOST
+- name: PGPORT
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.database.secretName }}
+      key: PGPORT
+- name: PGUSER
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.database.secretName }}
+      key: PGUSER
+- name: PGPASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.database.secretName }}
+      key: PGPASSWORD
+- name: PGDATABASE
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.database.secretName }}
+      key: PGDATABASE
 {{- end }}
 
 {{- define "platz.ownUrlSchema" -}}

@@ -42,8 +42,7 @@ spec:
           command:
             - /root/platz-k8s-agent
           env:
-            - name: DATABASE_URL
-              value: '{{ include "chart.databaseUrl" $ }}'
+            {{ include "database.envVars" $ | nindent 12 }}
             - name: PLATZ_OWN_URL
               value: '{{ include "platz.ownUrl" $ }}'
             - name: PLATZ_HELM_IMAGE

@@ -5,7 +5,7 @@ images:
     pullPolicy: IfNotPresent
   backend:
     repository: platzio/backend
-    tag: v0.6.2
+    tag: v0.6.3
     pullPolicy: IfNotPresent
   helm:
     repository: platzio/base
@@ -133,19 +133,8 @@ backupJob:
     name: platz-backup
     annotations: {}
 
-postgresql:
-  enabled: true
-  nameOverride: postgresql
-  auth:
-    username: platz
-    password: platz
-    database: platz
-  primary:
-    nodeSelector:
-      kubernetes.io/arch: amd64
-  readReplicas:
-    nodeSelector:
-      kubernetes.io/arch: amd64
+database:
+  secretName: postgres-creds
 
 imagePullSecrets: []
 nameOverride: ""
