@@ -5,11 +5,11 @@ images:
     pullPolicy: IfNotPresent
   backend:
     repository: platzio/backend
-    tag: v0.6.3
+    tag: v0.6.4
     pullPolicy: IfNotPresent
   helm:
     repository: platzio/base
-    tag: v6
+    tag: v7
 
 auth:
   adminEmails: []
