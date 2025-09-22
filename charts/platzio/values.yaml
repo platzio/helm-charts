@@ -128,7 +128,7 @@ backupJob:
         key: encryptionKey
   image:
     repository: popen2/postgres-backup-s3
-    tag: v14.2
+    tag: v17.5
   serviceAccount:
     name: platz-backup
     annotations: {}
