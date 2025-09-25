@@ -7,6 +7,33 @@ entries:
           description: Removed Bitnami PostgreSQL chart dependency
         - kind: changed
           description: Backend image now based on Alpine
+        - kind: changed
+          description: Updated base image to v8: Alpine based with bash
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.6.6
+    created: "2025-09-25T12:30:58.107599208Z"
+    description: A Helm chart for Platz.io
+    digest: 063f6009c7a71131102e1ecd1fcfd6b07349d67a141adf2c3477ed4661e68c92
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.6.6/platzio-0.6.6.tgz
+    version: 0.6.6
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: removed
+          description: Removed Bitnami PostgreSQL chart dependency
+        - kind: changed
+          description: Backend image now based on Alpine
       artifacthub.io/prerelease: "false"
     apiVersion: v2
     appVersion: 0.6.5
@@ -2668,4 +2695,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.1.0/platzio-0.1.0.tgz
     version: 0.1.0
-generated: "2025-09-22T07:57:02.99945448Z"
+generated: "2025-09-25T12:30:58.109783086Z"
