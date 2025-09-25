@@ -9,7 +9,7 @@ images:
     pullPolicy: IfNotPresent
   helm:
     repository: platzio/base
-    tag: v7
+    tag: v8
 
 auth:
   adminEmails: []
