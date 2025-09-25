@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "0.6.7"
-version: "0.6.7"
+appVersion: "0.6.8"
+version: "0.6.8"
 description: A Helm chart for Platz.io
 name: platzio
 type: application
