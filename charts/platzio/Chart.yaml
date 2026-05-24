@@ -9,7 +9,7 @@ keywords:
   - chart
   - cd
   - continuous deployment
-icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+icon: https://raw.githubusercontent.com/platzio/design/main/assets/Logo.svg
 sources:
   - https://github.com/platzio
 
@@ -17,12 +17,12 @@ annotations:
   artifacthub.io/prerelease: "true"
   artifacthub.io/changes: |
     - kind: added
-      description: chart-discovery OCI registry provider (provider=oci, PLATZ_OCI_REGISTRY_URL, PLATZ_OCI_POLL_INTERVAL)
+      description: "chart-discovery OCI registry provider (provider=oci, PLATZ_OCI_REGISTRY_URL, PLATZ_OCI_POLL_INTERVAL)"
     - kind: added
-      description: k8s-agent local cluster provider (provider=local, localContext, localKubeconfig, disableDeploymentCredentials)
+      description: "k8s-agent local cluster provider (provider=local, localContext, localKubeconfig, disableDeploymentCredentials)"
     - kind: added
-      description: Configurable database connection pool (database.pool.maxSize / minIdle / connectionTimeoutSecs / idleTimeoutSecs / maxLifetimeSecs)
+      description: "Configurable database connection pool (database.pool.maxSize / minIdle / connectionTimeoutSecs / idleTimeoutSecs / maxLifetimeSecs)"
     - kind: added
-      description: extraEnv on api, chart-discovery, k8s-agent, resource-sync, status-updates
+      description: "extraEnv on api, chart-discovery, k8s-agent, resource-sync, status-updates"
     - kind: fixed
-      description: resource-sync now honors resourceSync.replicaCount instead of a missing top-level replicaCount
+      description: "resource-sync now honors resourceSync.replicaCount instead of a missing top-level replicaCount"
