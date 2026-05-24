@@ -48,14 +48,29 @@ spec:
             {{ include "database.envVars" $ | nindent 12 }}
             - name: PLATZ_OWN_URL
               value: '{{ include "platz.ownUrl" $ }}'
+            {{- $provider := default "ecr" .provider }}
+            - name: PLATZ_REGISTRY_PROVIDER
+              value: {{ $provider | quote }}
+            {{- if eq $provider "ecr" }}
             - name: PLATZ_ECR_EVENTS_QUEUE
               value: '{{ .ecrEvents.queueName }}'
             - name: PLATZ_ECR_EVENTS_REGION
               value: '{{ .ecrEvents.regionName }}'
+            {{- else if eq $provider "oci" }}
+            - name: PLATZ_OCI_REGISTRY_URL
+              value: '{{ .oci.registryUrl }}'
+            {{- with .oci.pollInterval }}
+            - name: PLATZ_OCI_POLL_INTERVAL
+              value: {{ . | quote }}
+            {{- end }}
+            {{- end }}
             - name: RUST_BACKTRACE
               value: '1'
             - name: RUST_LOG
               value: 'debug,hyper=error,rustls=error,tower=error'
+            {{- with .extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           resources:
             {{- toYaml $.Values.chartDiscovery.resources | nindent 12 }}
       {{- with $.Values.nodeSelector }}

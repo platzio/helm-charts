@@ -60,6 +60,9 @@ spec:
               value: '1'
             - name: RUST_LOG
               value: 'debug,hyper=error,rustls=error,tower=error'
+            {{- with .Values.api.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           livenessProbe:
             httpGet:
               path: /status

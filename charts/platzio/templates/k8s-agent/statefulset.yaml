@@ -51,10 +51,29 @@ spec:
               value: '{{ $.Release.Namespace }}'
             - name: PLATZ_SELF_SERVICE_ACCOUNT_NAME
               value: {{ $serviceAccountName }}
+            {{- with .provider }}
+            - name: PLATZ_CLUSTER_PROVIDER
+              value: {{ . | quote }}
+            {{- end }}
+            {{- with .localContext }}
+            - name: PLATZ_LOCAL_CONTEXT
+              value: {{ . | quote }}
+            {{- end }}
+            {{- with .localKubeconfig }}
+            - name: PLATZ_LOCAL_KUBECONFIG
+              value: {{ . | quote }}
+            {{- end }}
+            {{- if .disableDeploymentCredentials }}
+            - name: PLATZ_DISABLE_DEPLOYMENT_CREDENTIALS
+              value: "true"
+            {{- end }}
             - name: RUST_BACKTRACE
               value: '1'
             - name: RUST_LOG
               value: 'debug,hyper=error,rustls=error,tower=error'
+            {{- with .extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           resources:
             {{- toYaml $.Values.k8sAgent.resources | nindent 12 }}
       {{- with $.Values.nodeSelector }}

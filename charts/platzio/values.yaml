@@ -5,7 +5,7 @@ images:
     pullPolicy: IfNotPresent
   backend:
     repository: platzio/backend
-    tag: v0.6.8
+    tag: v0.7.0-beta.1
     pullPolicy: IfNotPresent
   helm:
     repository: platzio/base
@@ -45,17 +45,29 @@ api:
     type: ClusterIP
     port: 80
     containerPort: 3000
+  # Extra environment variables to inject into the api container.
+  # Each entry is a standard k8s EnvVar struct (`name` + `value` or `valueFrom`).
+  extraEnv: []
 
 chartDiscovery:
   instances:
     - name: default
       enableTagParser: false
+      # Provider selects the discovery backend: "ecr" (default — watch SQS) or
+      # "oci" (poll a generic OCI registry such as Docker Distribution / zot).
+      provider: ecr
       ecrEvents:
         queueName: ""
         regionName: ""
+      oci:
+        # Base URL of the OCI registry to poll, e.g. http://registry.platz.svc.cluster.local:5000
+        registryUrl: ""
+        pollInterval: 5s
       serviceAccount:
         name: ""
         annotations: {}
+      # Extra environment variables to inject into this chart-discovery instance.
+      extraEnv: []
   resources:
     requests:
       cpu: 100m
@@ -74,6 +86,7 @@ resourceSync:
   serviceAccount:
     name: platz-resource-sync
     annotations: {}
+  extraEnv: []
 
 statusUpdates:
   resources:
@@ -86,13 +99,30 @@ statusUpdates:
   serviceAccount:
     name: platz-status-updates
     annotations: {}
+  extraEnv: []
 
 k8sAgent:
   instances:
     - name: default
+      # Provider selects the cluster discovery mode: "eks" (default — scan AWS) or
+      # "local" (register a single cluster from a kubeconfig context).
+      provider: eks
+      # When provider=local, the kubeconfig context to register. Defaults to the
+      # kubeconfig's current-context if empty.
+      localContext: ""
+      # When provider=local, optional path to a kubeconfig file inside the pod.
+      # Defaults to the kubectl default (~/.kube/config) when empty. Usually paired
+      # with a Secret/ConfigMap mount via extraEnv/volumes.
+      localKubeconfig: ""
+      # When true, k8s-agent does not provision per-deployment credentials.
+      # Use in local/dev setups where the helm pod runs against a single cluster
+      # with ambient credentials.
+      disableDeploymentCredentials: false
       serviceAccount:
         name: ""
         annotations: {}
+      # Extra environment variables to inject into this k8s-agent instance.
+      extraEnv: []
   resources:
     requests:
       cpu: 100m
@@ -135,6 +165,16 @@ backupJob:
 
 database:
   secretName: postgres-creds
+  # Connection pool tuning. Each setting maps to a DB_POOL_* env var read by every
+  # Platz pod that opens the database (api, chart-discovery, k8s-agent, resource-sync,
+  # status-updates). Leave blank to use the built-in defaults: maxSize=50,
+  # connectionTimeoutSecs=30, idleTimeoutSecs=600, maxLifetimeSecs=1800.
+  pool:
+    maxSize: ""
+    minIdle: ""
+    connectionTimeoutSecs: ""
+    idleTimeoutSecs: ""
+    maxLifetimeSecs: ""
 
 imagePullSecrets: []
 nameOverride: ""

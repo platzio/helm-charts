@@ -76,6 +76,26 @@ app.kubernetes.io/instance: {{ .Release.Name }}
     secretKeyRef:
       name: {{ .Values.database.secretName }}
       key: PGDATABASE
+{{- with .Values.database.pool.maxSize }}
+- name: DB_POOL_MAX_SIZE
+  value: {{ . | quote }}
+{{- end }}
+{{- with .Values.database.pool.minIdle }}
+- name: DB_POOL_MIN_IDLE
+  value: {{ . | quote }}
+{{- end }}
+{{- with .Values.database.pool.connectionTimeoutSecs }}
+- name: DB_POOL_CONNECTION_TIMEOUT_SECS
+  value: {{ . | quote }}
+{{- end }}
+{{- with .Values.database.pool.idleTimeoutSecs }}
+- name: DB_POOL_IDLE_TIMEOUT_SECS
+  value: {{ . | quote }}
+{{- end }}
+{{- with .Values.database.pool.maxLifetimeSecs }}
+- name: DB_POOL_MAX_LIFETIME_SECS
+  value: {{ . | quote }}
+{{- end }}
 {{- end }}
 
 {{- define "platz.ownUrlSchema" -}}

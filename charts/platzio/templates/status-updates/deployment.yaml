@@ -43,6 +43,9 @@ spec:
               value: '1'
             - name: RUST_LOG
               value: 'debug,hyper=error,rustls=error,tower=error'
+            {{- with .Values.statusUpdates.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           resources:
             {{- toYaml .Values.statusUpdates.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

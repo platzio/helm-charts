@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.resourceSync.replicaCount }}
   selector:
     matchLabels:
       {{- include "chart.selectorLabels" . | nindent 6 }}
@@ -43,6 +43,9 @@ spec:
               value: '1'
             - name: RUST_LOG
               value: 'debug,hyper=error,rustls=error,tower=error'
+            {{- with .Values.resourceSync.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resourceSync.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
