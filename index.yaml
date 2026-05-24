@@ -3,6 +3,37 @@ entries:
   platzio:
   - annotations:
       artifacthub.io/changes: |
+        - kind: added
+          description: chart-discovery OCI registry provider (provider=oci, PLATZ_OCI_REGISTRY_URL, PLATZ_OCI_POLL_INTERVAL)
+        - kind: added
+          description: k8s-agent local cluster provider (provider=local, localContext, localKubeconfig, disableDeploymentCredentials)
+        - kind: added
+          description: Configurable database connection pool (database.pool.maxSize / minIdle / connectionTimeoutSecs / idleTimeoutSecs / maxLifetimeSecs)
+        - kind: added
+          description: extraEnv on api, chart-discovery, k8s-agent, resource-sync, status-updates
+        - kind: fixed
+          description: resource-sync now honors resourceSync.replicaCount instead of a missing top-level replicaCount
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.7.0-beta.1
+    created: "2026-05-24T07:09:55.020459451Z"
+    description: A Helm chart for Platz.io
+    digest: a8d4c9c34e61074bd511cdcc325572ae061e39078574eaa66093792b9de40293
+    icon: https://raw.githubusercontent.com/platzio/frontend/main/src/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.7.0-beta.1/platzio-0.7.0-beta.1.tgz
+    version: 0.7.0-beta.1
+  - annotations:
+      artifacthub.io/changes: |
         - kind: removed
           description: Removed Bitnami PostgreSQL chart dependency
         - kind: changed
@@ -155,4 +186,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.6.3/platzio-0.6.3.tgz
     version: 0.6.3
-generated: "2026-05-24T05:46:03.638297Z"
+generated: "2026-05-24T07:09:55.020503926Z"
