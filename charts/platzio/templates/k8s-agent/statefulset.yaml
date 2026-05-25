@@ -67,6 +67,14 @@ spec:
             - name: PLATZ_DISABLE_DEPLOYMENT_CREDENTIALS
               value: "true"
             {{- end }}
+            {{- with .deploymentCredentialsRefreshInterval }}
+            - name: PLATZ_DEPLOYMENT_CREDENTIALS_REFRESH_INTERVAL
+              value: {{ . | quote }}
+            {{- end }}
+            {{- with .deploymentCredentialsTokenDuration }}
+            - name: PLATZ_DEPLOYMENT_CREDENTIALS_TOKEN_DURATION
+              value: {{ . | quote }}
+            {{- end }}
             - name: RUST_BACKTRACE
               value: '1'
             - name: RUST_LOG
