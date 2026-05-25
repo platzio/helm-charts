@@ -4,6 +4,41 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: added
+          description: "chart-discovery OCI registry provider (provider=oci, PLATZ_OCI_REGISTRY_URL, PLATZ_OCI_POLL_INTERVAL)"
+        - kind: added
+          description: "k8s-agent local cluster provider (provider=local, localContext, localKubeconfig, disableDeploymentCredentials)"
+        - kind: added
+          description: "Configurable database connection pool (database.pool.maxSize / minIdle / connectionTimeoutSecs / idleTimeoutSecs / maxLifetimeSecs)"
+        - kind: added
+          description: "extraEnv on api, chart-discovery, k8s-agent, resource-sync, status-updates"
+        - kind: added
+          description: "Configurable k8s-agent deployment credentials cadence (deploymentCredentialsRefreshInterval, deploymentCredentialsTokenDuration / PLATZ_DEPLOYMENT_CREDENTIALS_REFRESH_INTERVAL, PLATZ_DEPLOYMENT_CREDENTIALS_TOKEN_DURATION)"
+        - kind: fixed
+          description: "resource-sync now honors resourceSync.replicaCount instead of a missing top-level replicaCount"
+        - kind: changed
+          description: "k8s-agent deployment credential refresh no longer aborts the batch on the first failing deployment"
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.7.0-beta.2
+    created: "2026-05-25T21:38:45.554872244Z"
+    description: A Helm chart for Platz.io
+    digest: a58fc0d822571093f140728ff55bf52b0c4ec1f2b54facd09e8d90ce6fb804da
+    icon: https://raw.githubusercontent.com/platzio/design/main/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.7.0-beta.2/platzio-0.7.0-beta.2.tgz
+    version: 0.7.0-beta.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
           description: chart-discovery OCI registry provider (provider=oci, PLATZ_OCI_REGISTRY_URL, PLATZ_OCI_POLL_INTERVAL)
         - kind: added
           description: k8s-agent local cluster provider (provider=local, localContext, localKubeconfig, disableDeploymentCredentials)
@@ -186,4 +221,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.6.3/platzio-0.6.3.tgz
     version: 0.6.3
-generated: "2026-05-24T07:09:55.020503926Z"
+generated: "2026-05-25T21:38:45.554910832Z"
