@@ -1,10 +1,10 @@
-# Platz.io
+# 🕸️ Platz.io
 
 [Platz](https://platz.io) is a self-hosted control plane for Helm deployments. It turns your Helm charts into a guided, role-controlled experience — every team gets a typed form, a live status view, and an audit trail, without needing direct `kubectl` or `helm` access.
 
 This chart installs Platz into a single Kubernetes namespace. It deploys the API, the web frontend, and the four background workers that make up a Platz installation (`k8s-agent`, `chart-discovery`, `resource-sync`, `status-updates`).
 
-## TL;DR
+## ⚡ TL;DR
 
 ```bash
 helm repo add platzio https://platzio.github.io/helm-charts
@@ -29,7 +29,7 @@ helm install platz platzio/platzio -n platzio -f values.yaml
 
 A full walk-through (including ingress, cert-manager, and OIDC setup) lives in the [Installing with Helm](https://platz.io/docs/guide/install/helm) guide.
 
-## Introduction
+## 👋 Introduction
 
 Platz is built around a small set of concepts:
 
@@ -52,7 +52,7 @@ The chart deploys the following workloads:
 - **resource-sync** — reflects Kubernetes resource state of every Platz-managed namespace into the database.
 - **status-updates** — polls deployment status endpoints exposed by charts that opt in to the Status feature.
 
-## Prerequisites
+## ✅ Prerequisites
 
 - **Kubernetes 1.14+** (the chart emits `networking.k8s.io/v1` Ingress resources).
 - **Helm 3.8+** (older versions lack OCI registry support, which Platz relies on for chart discovery).
@@ -62,7 +62,7 @@ The chart deploys the following workloads:
 - **An ingress controller** (`ingress-nginx`, AWS Load Balancer Controller, Traefik, …) in the cluster where Platz runs, if you plan to expose it through Ingress.
 - **`cert-manager`** (optional) if you want the chart to issue a TLS certificate for you.
 
-## Installing the Chart
+## 📦 Installing the Chart
 
 ### 1. Add the repository
 
@@ -140,7 +140,7 @@ chartDiscovery:
         pollInterval: 30s
 ```
 
-## Uninstalling the Chart
+## 🧹 Uninstalling the Chart
 
 ```bash
 helm uninstall platz -n platzio
@@ -152,7 +152,7 @@ This removes the workloads, services, ingress, ServiceAccounts, and (if created)
 - The PostgreSQL database. Platz's data — envs, deployments, tasks, audit history — lives there. Drop the database manually if you want a clean slate.
 - The namespaces of any deployments Platz managed inside target clusters.
 
-## Parameters
+## ⚙️ Parameters
 
 ### Images
 
@@ -324,7 +324,7 @@ helm install platz platzio/platzio \
 
 For anything non-trivial, prefer a `values.yaml` file.
 
-## Configuration and installation details
+## 🛠️ Configuration and installation details
 
 ### Database
 
@@ -376,7 +376,7 @@ images:
     repository: registry.example.com/platzio/base
 ```
 
-## Upgrading the Chart
+## ⬆️ Upgrading the Chart
 
 Platz is currently in the `0.x` line. Minor version bumps may contain breaking changes; check [release notes](https://github.com/platzio/helm-charts/releases) before each upgrade.
 
@@ -387,7 +387,7 @@ helm upgrade platz platzio/platzio -n platzio -f platz-values.yaml
 
 Schema migrations run automatically on API startup. Keep an eye on the API pod logs the first time you start a new chart version; if a migration fails, the pod exits and the old version keeps running on the other replicas (if you've scaled out).
 
-## Documentation
+## 📚 Documentation
 
 - **[platz.io/docs](https://platz.io/docs)** — full user and admin guide.
 - **[platz.io/docs/guide/install/helm](https://platz.io/docs/guide/install/helm)** — the canonical Helm installation walk-through.
@@ -395,6 +395,6 @@ Schema migrations run automatically on API startup. Keep an eye on the API pod l
 - **[platz.io/docs/guide/chart-ext/overview](https://platz.io/docs/guide/chart-ext/overview)** — how to add a Chart Extension so your charts get a richer Platz UI.
 - **[github.com/platzio/dev](https://github.com/platzio/dev)** — local development setup that brings Platz up on a `kind` cluster with Tilt.
 
-## License
+## ⚖️ License
 
 Apache 2.0. See [LICENSE](https://github.com/platzio/helm-charts/blob/main/charts/platzio/LICENSE).
