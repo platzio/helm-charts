@@ -17,6 +17,47 @@ entries:
           description: "resource-sync now honors resourceSync.replicaCount instead of a missing top-level replicaCount"
         - kind: changed
           description: "k8s-agent deployment credential refresh no longer aborts the batch on the first failing deployment"
+        - kind: fixed
+          description: "Outbound TLS no longer panics on first use: api, chart-discovery, status-updates install a default rustls crypto provider"
+        - kind: fixed
+          description: "bots create/delete are exposed in the OpenAPI schema and generated SDKs again (NewBot, createBot, deleteBot)"
+        - kind: changed
+          description: "backend chart-ext dependency bumped to 0.7.1 (utoipa 5, juspay_jsonlogic)"
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
+    appVersion: 0.7.0-beta.4
+    created: "2026-05-29T19:51:38.60116488Z"
+    description: A Helm chart for Platz.io
+    digest: 250ec6ed5bbad622827dc06966d4ccda6f6e749c6de1e8af7afef2ada9c447c6
+    icon: https://raw.githubusercontent.com/platzio/design/main/assets/Logo.svg
+    keywords:
+    - helm
+    - chart
+    - cd
+    - continuous deployment
+    name: platzio
+    sources:
+    - https://github.com/platzio
+    type: application
+    urls:
+    - https://github.com/platzio/helm-charts/releases/download/platzio-0.7.0-beta.4/platzio-0.7.0-beta.4.tgz
+    version: 0.7.0-beta.4
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: "chart-discovery OCI registry provider (provider=oci, PLATZ_OCI_REGISTRY_URL, PLATZ_OCI_POLL_INTERVAL)"
+        - kind: added
+          description: "k8s-agent local cluster provider (provider=local, localContext, localKubeconfig, disableDeploymentCredentials)"
+        - kind: added
+          description: "Configurable database connection pool (database.pool.maxSize / minIdle / connectionTimeoutSecs / idleTimeoutSecs / maxLifetimeSecs)"
+        - kind: added
+          description: "extraEnv on api, chart-discovery, k8s-agent, resource-sync, status-updates"
+        - kind: added
+          description: "Configurable k8s-agent deployment credentials cadence (deploymentCredentialsRefreshInterval, deploymentCredentialsTokenDuration / PLATZ_DEPLOYMENT_CREDENTIALS_REFRESH_INTERVAL, PLATZ_DEPLOYMENT_CREDENTIALS_TOKEN_DURATION)"
+        - kind: fixed
+          description: "resource-sync now honors resourceSync.replicaCount instead of a missing top-level replicaCount"
+        - kind: changed
+          description: "k8s-agent deployment credential refresh no longer aborts the batch on the first failing deployment"
       artifacthub.io/prerelease: "true"
     apiVersion: v2
     appVersion: 0.7.0-beta.2
@@ -221,4 +262,4 @@ entries:
     urls:
     - https://github.com/platzio/helm-charts/releases/download/platzio-0.6.3/platzio-0.6.3.tgz
     version: 0.6.3
-generated: "2026-05-25T21:38:45.554910832Z"
+generated: "2026-05-29T19:51:38.601352028Z"
