@@ -11,10 +11,10 @@ jobs:
     outputs:
       images: ${{ steps.list.outputs.images }}
     steps:
-      - name: Checkout
+      - name: 📥 Checkout
         uses: actions/checkout@v6
 
-      - name: List chart images
+      - name: 📋 List chart images
         id: list
         run: |
           set -euo pipefail
@@ -30,7 +30,7 @@ jobs:
       matrix:
         image: ${{ fromJson(needs.list-images.outputs.images) }}
     steps:
-      - name: Verify ${{ matrix.image }} exists on Docker Hub
+      - name: 🔍 Verify ${{ matrix.image }} exists on Docker Hub
         run: |
           if ! docker buildx imagetools inspect "docker.io/${{ matrix.image }}" >/dev/null 2>&1; then
             echo "::error::docker.io/${{ matrix.image }} not found on Docker Hub — refusing to publish the chart"
@@ -41,20 +41,20 @@ jobs:
     needs: verify-images
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 📥 Checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Configure Git
+      - name: ⚙️ Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - name: Install Helm
+      - name: ⎈ Install Helm
         uses: azure/setup-helm@v4
 
-      - name: Run chart-releaser
+      - name: 🚀 Run chart-releaser
         uses: helm/chart-releaser-action@v1
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
