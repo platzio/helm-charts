@@ -22,6 +22,22 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v4
 
+      - name: Verify referenced images exist on Docker Hub
+        run: |
+          set -euo pipefail
+          values=charts/platzio/values.yaml
+          # Every image under .images (backend, frontend, helm/base) is tied to
+          # the release and must already be published before we ship the chart.
+          images=$(yq '.images[] | .repository + ":" + .tag' "$values" | tr -d '"')
+          for image in $images; do
+            echo "Checking docker.io/${image} ..."
+            if ! docker buildx imagetools inspect "docker.io/${image}" >/dev/null 2>&1; then
+              echo "::error::docker.io/${image} not found on Docker Hub — refusing to publish the chart"
+              exit 1
+            fi
+            echo "  found"
+          done
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1
         env:
